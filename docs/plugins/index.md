@@ -17,7 +17,7 @@ Plugins are the primary distribution mechanism for Ring AI tools. Each plugin is
 **Installation:**
 
 ```bash
-/plugin marketplace add ring/ring-ai
+/plugin marketplace add ringprotocol/ring-ai
 ```
 
 ## Plugin Architecture
@@ -46,15 +46,15 @@ The `plugin.json` file defines the plugin:
 
 ```json
 {
-  "name": "ring-hooks",
-  "version": "1.3.0",
-  "description": "AI-powered assistance for creating Ring V4 hooks",
+  "name": "ring-trading",
+  "version": "1.0.0",
+  "description": "Ring swap integration",
   "author": {
     "name": "Ring Labs",
     "email": "ai-services@ring.org"
   },
   "license": "MIT",
-  "skills": ["./skills/v4-security-foundations"]
+  "skills": ["./skills/swap-integration", "./skills/pay-with-any-token"]
 }
 ```
 
@@ -93,7 +93,7 @@ description: Expert agent for complex swap integration questions
 Instructions for the agent on how to handle specialized queries...
 ```
 
-Not all plugins include agents. Currently, `ring-trading` and `ring-viem` provide specialized expert agents.
+Not all plugins include agents. Currently, `ring-trading` provides a specialized expert agent.
 
 ## Versioning
 

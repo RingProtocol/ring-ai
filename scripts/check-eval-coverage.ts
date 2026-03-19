@@ -33,9 +33,11 @@ function getChangedSkills(): Set<string> {
   const skills = new Set<string>();
 
   try {
-    const gitCommand = stagedOnly ? 'git diff --cached --name-only' : 'git diff --name-only HEAD~1';
+    const gitCommand = stagedOnly
+      ? 'git diff --cached --name-status'
+      : 'git diff --name-status HEAD~1';
 
-    const changedFiles = execSync(gitCommand, { encoding: 'utf8' })
+    const changedEntries = execSync(gitCommand, { encoding: 'utf8' })
       .trim()
       .split('\n')
       .filter(Boolean);
@@ -43,9 +45,16 @@ function getChangedSkills(): Set<string> {
     // Pattern: packages/plugins/<plugin>/skills/<skill>/...
     const skillPattern = /^packages\/plugins\/[^/]+\/skills\/([^/]+)\//;
 
-    for (const file of changedFiles) {
+    for (const entry of changedEntries) {
+      const [status, file] = entry.split('\t');
+      if (!status || !file) {
+        continue;
+      }
+      if (status.startsWith('D')) {
+        continue;
+      }
       const match = file.match(skillPattern);
-      if (match) {
+      if (match && skillExists(match[1])) {
         skills.add(match[1]);
       }
     }
@@ -55,6 +64,26 @@ function getChangedSkills(): Set<string> {
   }
 
   return skills;
+}
+
+function skillExists(skillName: string): boolean {
+  const skillsGlobPath = join(process.cwd(), 'packages', 'plugins');
+  if (!existsSync(skillsGlobPath)) {
+    return false;
+  }
+
+  const plugins = readdirSync(skillsGlobPath, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name);
+
+  for (const plugin of plugins) {
+    const skillPath = join(skillsGlobPath, plugin, 'skills', skillName);
+    if (existsSync(skillPath)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /**
