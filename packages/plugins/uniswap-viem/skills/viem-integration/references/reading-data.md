@@ -502,14 +502,14 @@ const name = await client.getEnsName({
 
 **Important**: Always use `normalize()` from `viem/ens` to normalize ENS names before resolution. This handles Unicode normalization (UTS-46) required by the ENS protocol.
 
-## Common Uniswap V3 ABIs
+## Common Ring V3 ABIs
 
-Frequently needed ABIs for Uniswap V3 contract interactions:
+Frequently needed ABIs for Ring V3 contract interactions:
 
 ```typescript
 import { parseAbi } from 'viem';
 
-// Uniswap V3 Pool events
+// Ring V3 Pool events
 const poolAbi = parseAbi([
   'event Swap(address indexed sender, address indexed recipient, int256 amount0, int256 amount1, uint160 sqrtPriceX96, uint128 liquidity, int24 tick)',
   'event Mint(address sender, address indexed owner, int24 indexed tickLower, int24 indexed tickUpper, uint128 amount, uint256 amount0, uint256 amount1)',
@@ -522,7 +522,7 @@ const poolAbi = parseAbi([
   'function token1() view returns (address)',
 ]);
 
-// Uniswap V3 Factory
+// Ring V3 Factory
 const factoryAbi = parseAbi([
   'event PoolCreated(address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool)',
   'function getPool(address tokenA, address tokenB, uint24 fee) view returns (address pool)',

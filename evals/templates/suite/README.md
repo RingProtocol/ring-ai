@@ -31,7 +31,7 @@ Each eval suite uses a `prompt-wrapper.txt` (or `.js`) template that injects the
 skill's SKILL.md content as context before the user's test case. This ensures the
 model has the skill's instructions when generating responses.
 
-If your SKILL.md contains URL-encoded JSON with `{%22` patterns (e.g., Uniswap
+If your SKILL.md contains URL-encoded JSON with `{%22` patterns (e.g., Ring
 deep link URLs), use `prompt-wrapper.js` instead of `.txt` to avoid Nunjucks
 template parsing errors. See `evals/suites/liquidity-planner/prompt-wrapper.js`
 for an example.

@@ -1,19 +1,19 @@
 {
-  "name": "@uniswap/uniswap-trading",
+  "name": "@ring/ring-trading",
   "version": "0.0.1",
   "private": true,
-  "description": "Integrate Uniswap swaps via Trading API, Universal Router SDK, or direct smart contract calls",
-  "author": "Uniswap Labs <ai-services@uniswap.org>",
+  "description": "Integrate Ring swaps via Trading API, Universal Router SDK, or direct smart contract calls",
+  "author": "Ring Labs <ai-services@ring.org>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uniswap/uniswap-ai.git",
-    "directory": "packages/plugins/uniswap-trading"
+    "url": "https://github.com/ringprotocol/ring-ai.git",
+    "directory": "packages/plugins/ring-trading"
   },
   "keywords": [
     "claude-code",
     "plugin",
-    "uniswap",
+    "ring",
     "swap",
     "defi",
     "trading-api",

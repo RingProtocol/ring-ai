@@ -5,7 +5,7 @@ order: 1
 
 # Contributing Guide
 
-Thank you for your interest in contributing to Uniswap AI! This guide will help you get started.
+Thank you for your interest in contributing to Ring AI! This guide will help you get started.
 
 ## Prerequisites
 
@@ -20,8 +20,8 @@ Thank you for your interest in contributing to Uniswap AI! This guide will help 
 
 ```bash
 # Fork the repository on GitHub, then clone
-git clone https://github.com/YOUR_USERNAME/uniswap-ai.git
-cd uniswap-ai
+git clone https://github.com/YOUR_USERNAME/ring-ai.git
+cd ring-ai
 ```
 
 ### 2. Install Dependencies
@@ -131,7 +131,7 @@ Each plugin needs:
 Skills are defined in `packages/plugins/*/skills/`:
 
 ```bash
-mkdir -p packages/plugins/uniswap-hooks/skills/my-skill
+mkdir -p packages/plugins/ring-wallet/skills/my-skill
 ```
 
 Each skill needs:
@@ -177,11 +177,8 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ### Scopes
 
-- `hooks` - uniswap-hooks plugin
-- `cca` - uniswap-cca plugin
-- `trading` - uniswap-trading plugin
-- `viem` - uniswap-viem plugin
-- `driver` - uniswap-driver plugin
+- `trading` - ring-trading plugin
+- `driver` - ring-driver plugin
 - `evals` - Evaluation framework
 - `docs` - Documentation
 - `ci` - CI/CD workflows
@@ -189,7 +186,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/):
 ## Getting Help
 
 - Open an issue for bugs or feature requests
-- Join the [Uniswap Discord](https://discord.gg/uniswap) for discussions
+- Join the [Ring Discord](https://discord.gg/ringprotocol) for discussions
 - Check existing issues before creating new ones
 
 ## Related

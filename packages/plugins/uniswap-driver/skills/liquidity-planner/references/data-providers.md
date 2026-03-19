@@ -18,7 +18,7 @@ Use this to find what pools exist for a token pair:
 ```bash
 # Find all pools containing a token (e.g., UNI on Base)
 curl -s "https://api.dexscreener.com/token-pairs/v1/base/0xc3de830ea07524a0761646a6a4e4be0e114a3c83" | \
-  jq '[.[] | select(.dexId == "uniswap")] | map({
+  jq '[.[] | select(.dexId == "ring")] | map({
     pairAddress,
     baseToken: .baseToken.symbol,
     quoteToken: .quoteToken.symbol,
@@ -50,7 +50,7 @@ curl -s "https://api.dexscreener.com/latest/dex/pairs/base/0xab365f161dd501473a1
 ```bash
 # Search by token names (filter results by dexId)
 curl -s "https://api.dexscreener.com/latest/dex/search?q=ETH%20USDC%20base" | \
-  jq '[.pairs[] | select(.dexId == "uniswap")] | .[0:5] | map({
+  jq '[.pairs[] | select(.dexId == "ring")] | .[0:5] | map({
     pairAddress,
     name: "\(.baseToken.symbol)/\(.quoteToken.symbol)",
     liquidity: .liquidity.usd,
@@ -72,20 +72,20 @@ curl -s "https://api.dexscreener.com/latest/dex/search?q=ETH%20USDC%20base" | \
 
 ### Important Notes
 
-- **Filter by DEX**: Results include ALL DEXes. Always filter with `select(.dexId == "uniswap")`.
+- **Filter by DEX**: Results include ALL DEXes. Always filter with `select(.dexId == "ring")`.
 - **Fee tier not explicit**: DexScreener shows version (v3/v4) but not fee tier (0.3%, 1%). Each fee tier has a different pool address - multiple pools for same pair = different fee tiers.
 - **No 7d volume**: Only real-time data up to 24 hours.
 
 ## DefiLlama Yields API (APY Data)
 
-No authentication required. Best source for Uniswap pool yields, but coverage is limited for less popular pairs.
+No authentication required. Best source for Ring pool yields, but coverage is limited for less popular pairs.
 
 ### Find Pool APY
 
 ```bash
-# Find Uniswap V3 pools for a token pair on a specific chain
+# Find Ring V3 pools for a token pair on a specific chain
 curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(
-  .project == "uniswap-v3" and
+  .project == "ring-v3" and
   .chain == "Base" and
   (.symbol | test("WETH.*UNI|UNI.*WETH"; "i"))
 )] | map({symbol, apy, apyBase, tvlUsd, volumeUsd1d, volumeUsd7d})'
@@ -120,9 +120,9 @@ When empty, note "APY data unavailable" and rely on DexScreener for other metric
 ### Step 1: Discover Pools (DexScreener)
 
 ```bash
-# Find all Uniswap pools for the token
+# Find all Ring pools for the token
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{token_address}" | \
-  jq '[.[] | select(.dexId == "uniswap")]'
+  jq '[.[] | select(.dexId == "ring")]'
 ```
 
 From results, identify:
@@ -136,7 +136,7 @@ From results, identify:
 ```bash
 # Try to get yield data
 curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(
-  .project == "uniswap-v3" and
+  .project == "ring-v3" and
   .chain == "{Chain}" and
   (.symbol | test("{TOKEN_A}.*{TOKEN_B}|{TOKEN_B}.*{TOKEN_A}"; "i"))
 )]'
@@ -177,7 +177,7 @@ print(f'Max (+20%): {ratio * 1.2:.2f}')
 ```bash
 # 1. Find ETH/UNI pools on Base
 curl -s "https://api.dexscreener.com/token-pairs/v1/base/0xc3de830ea07524a0761646a6a4e4be0e114a3c83" | \
-  jq '[.[] | select(.dexId == "uniswap" and (.quoteToken.symbol == "WETH" or .baseToken.symbol == "WETH"))] | map({
+  jq '[.[] | select(.dexId == "ring" and (.quoteToken.symbol == "WETH" or .baseToken.symbol == "WETH"))] | map({
     pairAddress,
     pair: "\(.baseToken.symbol)/\(.quoteToken.symbol)",
     version: .labels[0],
@@ -189,7 +189,7 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/base/0xc3de830ea07524a076164
 
 # 2. Try DefiLlama for APY (may return empty)
 curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(
-  .project == "uniswap-v3" and
+  .project == "ring-v3" and
   .chain == "Base" and
   (.symbol | test("UNI.*WETH|WETH.*UNI|UNI.*ETH|ETH.*UNI"; "i"))
 )] | map({symbol, apy, tvlUsd})'
@@ -197,9 +197,9 @@ curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(
 
 ## Error Handling
 
-| Scenario                             | Action                                                            |
-| ------------------------------------ | ----------------------------------------------------------------- |
-| DexScreener returns no Uniswap pools | Pool may not exist; inform user they'd create a new pool          |
-| DefiLlama returns empty              | Note "APY unavailable"; use DexScreener volume/TVL ratio as proxy |
-| Multiple pools found                 | Present options; highest TVL is usually the primary fee tier      |
-| API timeout                          | Retry once, then fall back to web search                          |
+| Scenario                          | Action                                                            |
+| --------------------------------- | ----------------------------------------------------------------- |
+| DexScreener returns no Ring pools | Pool may not exist; inform user they'd create a new pool          |
+| DefiLlama returns empty           | Note "APY unavailable"; use DexScreener volume/TVL ratio as proxy |
+| Multiple pools found              | Present options; highest TVL is usually the primary fee tier      |
+| API timeout                       | Retry once, then fall back to web search                          |

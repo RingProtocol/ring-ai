@@ -1,38 +1,38 @@
-# uniswap-driver
+# ring-driver
 
-AI-powered assistance for planning Uniswap swaps and liquidity positions, generating deep links to execute in the Uniswap interface.
+AI-powered assistance for planning Ring swaps and liquidity positions, generating deep links to execute in the Ring interface.
 
 ## Overview
 
-This plugin helps users research and plan Uniswap operations, then generates deep links that open directly in the Uniswap web interface with pre-filled parameters. This "plan then execute" approach is safer and more transparent than autonomous transaction execution.
+This plugin helps users research and plan Ring operations, then generates deep links that open directly in the Ring web interface with pre-filled parameters. This "plan then execute" approach is safer and more transparent than autonomous transaction execution.
 
 ## Skills
 
 ### swap-planner
 
-Plan token swaps across any Uniswap-supported chain. The skill:
+Plan token swaps across any Ring-supported chain. The skill:
 
 - Understands your swap intent (tokens, amounts, chain)
 - Verifies token contracts on-chain
 - Researches tokens via web search when needed
-- Generates a deep link to execute the swap in the Uniswap interface
+- Generates a deep link to execute the swap in the Ring interface
 
-**Trigger phrases**: "swap ETH for USDC", "trade tokens", "exchange on Uniswap", "buy WBTC with USDC"
+**Trigger phrases**: "swap ETH for USDC", "trade tokens", "exchange on Ring", "buy WBTC with USDC"
 
 ### liquidity-planner
 
-Plan liquidity positions for Uniswap V2, V3, or V4 pools. The skill:
+Plan liquidity positions for Ring V2, V3, or V4 pools. The skill:
 
 - Understands your LP intent (token pair, amount, version)
 - Checks current pool price and liquidity
 - Suggests price ranges based on current price
-- Generates a deep link to create the position in the Uniswap interface
+- Generates a deep link to create the position in the Ring interface
 
 **Trigger phrases**: "provide liquidity", "create LP position", "add liquidity to pool", "become a liquidity provider"
 
 ## Supported Chains
 
-All chains supported by the Uniswap interface:
+All chains supported by the Ring interface:
 
 - Ethereum Mainnet
 - Base
@@ -52,14 +52,14 @@ All chains supported by the Uniswap interface:
 1. **You describe your intent** - "I want to swap 1 ETH for USDC on Base"
 2. **AI researches and plans** - Verifies contracts, checks liquidity, identifies risks
 3. **AI generates deep link** - Creates a URL with all parameters pre-filled
-4. **You execute** - Click the link to open Uniswap with everything ready to go
+4. **You execute** - Click the link to open Ring with everything ready to go
 
 ## Installation
 
 ```bash
-# From the uniswap-ai marketplace
-/plugin marketplace add Uniswap/uniswap-ai
-/plugin install uniswap-driver@uniswap-ai
+# From the ring-ai marketplace
+/plugin marketplace add Ring/ring-ai
+/plugin install ring-driver@ring-ai
 ```
 
 ## Data Sources
@@ -70,6 +70,6 @@ All chains supported by the Uniswap interface:
 ## Future Enhancements
 
 - Token research skill for deeper analysis
-- API integration (Uniswap GraphQL, CoinGecko)
+- API integration (Ring GraphQL, CoinGecko)
 - Cross-chain swap support
 - Historical volatility analysis for range suggestions

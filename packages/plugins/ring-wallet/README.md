@@ -5,7 +5,7 @@ AI guidance for integrating DApps into Ring Wallet using the official SDK, EIP-1
 ## Installation
 
 ```bash
-npx skills add ringprotocol/uniswap-ai --skill dapp-to-ringwallet
+npx skills add ringprotocol/ring-ai --skill dapp-to-ringwallet
 ```
 
 ## Included Skill

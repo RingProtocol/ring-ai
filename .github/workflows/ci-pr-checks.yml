@@ -70,7 +70,7 @@ jobs:
       - name: Install npm
         env:
           NPM_VERSION: ${{ vars.NPM_VERSION || '11.7.0' }}
-        # nosemgrep: uniswap.npm-package-in-action-not-pinned-to-commit-sha -- npm CLI from npm registry, not a git-hosted action
+        # nosemgrep: ring.npm-package-in-action-not-pinned-to-commit-sha -- npm CLI from npm registry, not a git-hosted action
         run: npm install -g "npm@$NPM_VERSION"
 
       - name: Verify package-lock.json

@@ -1,6 +1,6 @@
 # Swap Planning Correctness Rubric
 
-Evaluate whether the response correctly plans a Uniswap token swap.
+Evaluate whether the response correctly plans a Ring token swap.
 
 ## Required Elements (Must Include)
 
@@ -15,7 +15,7 @@ Score based on how many of these are correctly implemented:
    - Uses chain-appropriate token addresses (not cross-chain addresses)
 
 3. **Deep Link Generation**
-   - Generates a valid Uniswap deep link (app.uniswap.org)
+   - Generates a valid Ring deep link (app.ring.org)
    - Includes correct query parameters (inputCurrency, outputCurrency, chain)
 
 4. **Token Verification**

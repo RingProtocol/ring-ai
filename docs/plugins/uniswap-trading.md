@@ -1,24 +1,24 @@
 ---
-title: Uniswap Trading
+title: Ring Trading
 order: 5
 ---
 
-# Uniswap Trading
+# Ring Trading
 
-Integrate Uniswap swaps via Trading API, Universal Router SDK, or direct smart contract calls.
+Integrate Ring swaps via Trading API, Universal Router SDK, or direct smart contract calls.
 
 ## Installation
 
 ```bash
-/plugin install uniswap-trading
+/plugin install ring-trading
 ```
 
 ## Skills
 
-| Skill                                           | Description                                                                  | Invocation            |
-| ----------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
-| [Swap Integration](../skills/swap-integration)  | Comprehensive guide for integrating Uniswap swaps                            | `/swap-integration`   |
-| [Pay With Tokens](../skills/pay-with-any-token) | Fulfill HTTP 402 payment challenges using tokens via the Uniswap Trading API | `/pay-with-any-token` |
+| Skill                                           | Description                                                               | Invocation            |
+| ----------------------------------------------- | ------------------------------------------------------------------------- | --------------------- |
+| [Swap Integration](../skills/swap-integration)  | Comprehensive guide for integrating Ring swaps                            | `/swap-integration`   |
+| [Pay With Tokens](../skills/pay-with-any-token) | Fulfill HTTP 402 payment challenges using tokens via the Ring Trading API | `/pay-with-any-token` |
 
 ## Agents
 
@@ -31,23 +31,23 @@ Integrate Uniswap swaps via Trading API, Universal Router SDK, or direct smart c
 | Method                    | Best For              | Description                                                                            |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------- |
 | **Trading API**           | Most use cases        | REST API with automatic routing optimization. 3-step flow: check_approval, quote, swap |
-| **Universal Router SDK**  | Full control          | Direct SDK usage with `@uniswap/universal-router-sdk`. Command-based architecture      |
+| **Universal Router SDK**  | Full control          | Direct SDK usage with `@ring/universal-router-sdk`. Command-based architecture         |
 | **Direct Smart Contract** | On-chain integrations | Solidity contracts calling Universal Router for DeFi composability                     |
 
 ## Supported Chains
 
-See the [official supported chains list](https://api-docs.uniswap.org/guides/supported_chains#supported-chains-for-swapping) for the current set of chains supported by the Trading API.
+See the [official supported chains list](https://api-docs.ring.org/guides/supported_chains#supported-chains-for-swapping) for the current set of chains supported by the Trading API.
 
 ## Key References
 
-- **Trading API**: `https://trade-api.gateway.uniswap.org/v1`
-- **Universal Router**: [github.com/Uniswap/universal-router](https://github.com/Uniswap/universal-router)
-- **SDKs**: `@uniswap/universal-router-sdk`, `@uniswap/v3-sdk`, `@uniswap/sdk-core`
+- **Trading API**: `https://trade-api.gateway.ring.org/v1`
+- **Universal Router**: [github.com/Ring/universal-router](https://github.com/Ring/universal-router)
+- **SDKs**: `@ring/universal-router-sdk`, `@ring/v3-sdk`, `@ring/sdk-core`
 - **Permit2**: Token approval infrastructure
 
 ## Related
 
 - [Plugins Overview](/plugins/) - All available plugins
-- [Uniswap Viem](/plugins/uniswap-viem) - Foundational EVM integration (prerequisite)
-- [Uniswap Hooks](/plugins/uniswap-hooks) - v4 hook development
+- [Ring Viem](/plugins/ring-viem) - Foundational EVM integration (prerequisite)
+- [Ring Hooks](/plugins/ring-hooks) - v4 hook development
 - [Skills](/skills/) - All available skills

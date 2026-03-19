@@ -1,17 +1,17 @@
 ---
 name: liquidity-planner
-description: This skill should be used when the user asks to "provide liquidity", "create LP position", "add liquidity to pool", "become a liquidity provider", "create v3 position", "create v4 position", "concentrated liquidity", "set price range", or mentions providing liquidity, LP positions, or liquidity pools on Uniswap. Generates deep links to create positions in the Uniswap interface.
+description: This skill should be used when the user asks to "provide liquidity", "create LP position", "add liquidity to pool", "become a liquidity provider", "create v3 position", "create v4 position", "concentrated liquidity", "set price range", or mentions providing liquidity, LP positions, or liquidity pools on Ring. Generates deep links to create positions in the Ring interface.
 allowed-tools: Read, Glob, Grep, Bash(curl:*), Bash(jq:*), Bash(cast:*), Bash(xdg-open:*), Bash(open:*), WebFetch, WebSearch, Task(subagent_type:Explore), AskUserQuestion
 model: sonnet
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '0.2.0'
 ---
 
 # Liquidity Position Planning
 
-Plan and generate deep links for creating liquidity positions on Uniswap v2, v3, and v4.
+Plan and generate deep links for creating liquidity positions on Ring v2, v3, and v4.
 
 > **Runtime Compatibility:** This skill uses `AskUserQuestion` for interactive prompts. If `AskUserQuestion` is not available in your runtime, collect the same parameters through natural language conversation instead.
 
@@ -22,9 +22,9 @@ Plan liquidity positions by:
 1. Gathering LP intent (token pair, amount, version)
 2. Checking current pool price and liquidity
 3. Suggesting price ranges based on current price
-4. Generating a deep link that opens in the Uniswap interface with parameters pre-filled
+4. Generating a deep link that opens in the Ring interface with parameters pre-filled
 
-The generated link opens Uniswap with all parameters ready for position creation.
+The generated link opens Ring with all parameters ready for position creation.
 
 > **Note:** Browser opening (`xdg-open`/`open`) may fail in SSH, containerized, or headless environments. Always display the URL prominently so users can copy and access it manually if needed.
 
@@ -123,10 +123,10 @@ Before fetching metrics, verify the pool exists and discover available fee tiers
 **Find pools for a token using DexScreener:**
 
 ```bash
-# Get all Uniswap pools for a token (replace {network} and {address})
+# Get all Ring pools for a token (replace {network} and {address})
 # IMPORTANT: Validate address matches ^0x[a-fA-F0-9]{40}$ and network is from allowed list
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
-  jq '[.[] | select(.dexId == "uniswap")] | map({
+  jq '[.[] | select(.dexId == "ring")] | map({
     pairAddress,
     pair: "\(.baseToken.symbol)/\(.quoteToken.symbol)",
     version: .labels[0],
@@ -143,7 +143,7 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
 - Pool TVL (`liquidity.usd`) to assess liquidity depth
 - Version (v3 or v4) from `labels[0]`
 
-**If no Uniswap pools found:** The pair may not have an existing pool. Inform the user they would be creating a new pool and setting the initial price.
+**If no Ring pools found:** The pair may not have an existing pool. Inform the user they would be creating a new pool and setting the initial price.
 
 ### Step 4: Assess Pool Liquidity
 
@@ -176,8 +176,8 @@ Before suggesting ranges, fetch pool data for informed decisions. See `reference
 **Get pool APY and volume with DefiLlama:**
 
 ```bash
-# Find Uniswap V3 pools for a token pair
-curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(.project == "uniswap-v3" and .chain == "Ethereum" and (.symbol | test("WETH.*USDC|USDC.*WETH")))]'
+# Find Ring V3 pools for a token pair
+curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(.project == "ring-v3" and .chain == "Ethereum" and (.symbol | test("WETH.*USDC|USDC.*WETH")))]'
 ```
 
 **Response fields to use:**
@@ -194,7 +194,7 @@ curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(.project == "uni
 ```bash
 # Get token prices from the pool data (already fetched in Step 3)
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
-  jq '[.[] | select(.dexId == "uniswap")][0] | {
+  jq '[.[] | select(.dexId == "ring")][0] | {
     baseTokenPrice: .baseToken.priceUsd,
     quoteTokenPrice: .quoteToken.priceUsd
   }'
@@ -204,7 +204,7 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
 
 ```bash
 # Find all fee tier variants and compare APY
-curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(.project == "uniswap-v3" and (.symbol | test("WETH.*USDC")))] | map({symbol, tvlUsd, apy, volumeUsd1d})'
+curl -s "https://yields.llama.fi/pools" | jq '[.data[] | select(.project == "ring-v3" and (.symbol | test("WETH.*USDC")))] | map({symbol, tvlUsd, apy, volumeUsd1d})'
 ```
 
 If APIs are unavailable, fall back to web search for price estimates.
@@ -301,9 +301,9 @@ If pool data shows one tier with significantly higher APY or volume, recommend t
 
 ### Step 8: Generate Deep Link
 
-Construct the Uniswap position creation URL:
+Construct the Ring position creation URL:
 
-**Base URL:** `https://app.uniswap.org/positions/create`
+**Base URL:** `https://app.ring.org/positions/create`
 
 **URL Parameters:**
 
@@ -421,25 +421,25 @@ Format the response with:
 - **Gas Costs**: Creating and managing positions costs gas
 - **APY Note**: Shown APY is historical and may vary with market conditions
 
-Opening Uniswap in your browser...
+Opening Ring in your browser...
 ```
 
 **After displaying the summary, open the URL in the browser:**
 
 ```bash
 # Linux - note: only quotes are encoded (%22), not braces or colons
-xdg-open "https://app.uniswap.org/positions/create?currencyA=NATIVE&currencyB=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&chain=base&fee={%22feeAmount%22:3000,%22tickSpacing%22:60,%22isDynamic%22:false}&priceRangeState={%22priceInverted%22:false,%22fullRange%22:false,%22minPrice%22:%222800%22,%22maxPrice%22:%223600%22,%22initialPrice%22:%22%22,%22inputMode%22:%22price%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{%22TOKEN0%22:%221%22}}&step=1"
+xdg-open "https://app.ring.org/positions/create?currencyA=NATIVE&currencyB=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&chain=base&fee={%22feeAmount%22:3000,%22tickSpacing%22:60,%22isDynamic%22:false}&priceRangeState={%22priceInverted%22:false,%22fullRange%22:false,%22minPrice%22:%222800%22,%22maxPrice%22:%223600%22,%22initialPrice%22:%22%22,%22inputMode%22:%22price%22}&depositState={%22exactField%22:%22TOKEN0%22,%22exactAmounts%22:{%22TOKEN0%22:%221%22}}&step=1"
 
 # macOS
-open "https://app.uniswap.org/positions/create?..."
+open "https://app.ring.org/positions/create?..."
 ```
 
 **Environment limitations:** Browser opening may fail in remote SSH, containerized, or headless environments. If `xdg-open`/`open` fails, display the full URL prominently so users can copy and paste it manually:
 
 ```markdown
-**[Click here to open in Uniswap](https://app.uniswap.org/positions/create?...)**
+**[Click here to open in Ring](https://app.ring.org/positions/create?...)**
 
-Or copy this URL: `https://app.uniswap.org/positions/create?...`
+Or copy this URL: `https://app.ring.org/positions/create?...`
 ```
 
 Always present the summary and URL so users can review and create the position.
@@ -481,7 +481,7 @@ For V3 positions with custom range:
 
 ## Supported Chains
 
-All Uniswap-supported chains - see `references/position-types.md` for version availability by chain.
+All Ring-supported chains - see `references/position-types.md` for version availability by chain.
 
 ## Additional Resources
 
@@ -505,4 +505,4 @@ Decodes to:
 { "fullRange": true }
 ```
 
-> **Why?** The Uniswap interface expects JSON-like parameter structure. Full URL encoding of braces and colons breaks parsing. Only quotes need encoding to avoid URL syntax conflicts.
+> **Why?** The Ring interface expects JSON-like parameter structure. Full URL encoding of braces and colons breaks parsing. Only quotes need encoding to avoid URL syntax conflicts.

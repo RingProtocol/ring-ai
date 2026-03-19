@@ -1,7 +1,7 @@
 ---
 name: pay-with-any-token
 description: >
-  Pay HTTP 402 payment challenges using tokens via the Tempo CLI and Uniswap
+  Pay HTTP 402 payment challenges using tokens via the Tempo CLI and Ring
   Trading API. Use when the user encounters a 402 Payment Required response,
   needs to fulfill a machine payment, mentions "MPP", "Tempo payment", "pay for
   API access", "HTTP 402", "x402", "machine payment protocol",
@@ -10,7 +10,7 @@ allowed-tools: Read, Glob, Grep, Bash(curl:*), Bash(jq:*), Bash(cast:*), Bash(te
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '2.0.0'
 ---
 
@@ -18,7 +18,7 @@ metadata:
 
 Use the **Tempo CLI** to call paid APIs and handle 402 challenges automatically.
 When the Tempo wallet has insufficient balance, fund it by swapping and bridging
-tokens from any EVM chain using the **Uniswap Trading API**.
+tokens from any EVM chain using the **Ring Trading API**.
 
 ## Tempo CLI Setup
 
@@ -115,7 +115,7 @@ to the Tempo wallet address.
 ### Prerequisites
 
 - `UNISWAP_API_KEY` env var (register at
-  [developers.uniswap.org](https://developers.uniswap.org/))
+  [developers.ring.org](https://developers.ring.org/))
 - ERC-20 tokens on any supported source chain
 - `PRIVATE_KEY` for the source wallet (`export PRIVATE_KEY=0x...`). **Never
   commit or hardcode it.**
@@ -221,7 +221,7 @@ PAYMENT_TOKEN=$(echo "$PAYMENT_METHODS" | jq -r ".[$SELECTED_INDEX].token")
 
 ```text
 Source token (Base/Ethereum)
-  -> [Phase 4A: Uniswap Trading API swap] -> native USDC (bridge asset)
+  -> [Phase 4A: Ring Trading API swap] -> native USDC (bridge asset)
   -> [Phase 4B: bridge via Trading API]   -> USDC.e on Tempo (to TEMPO_WALLET_ADDRESS)
   -> tempo request retries automatically with funded wallet
 ```
@@ -230,7 +230,7 @@ Source token (Base/Ethereum)
 
 ### Phase 4A — Swap to USDC on Source Chain (if needed)
 
-Swap the source token to USDC via the Uniswap Trading API (`EXACT_OUTPUT`).
+Swap the source token to USDC via the Ring Trading API (`EXACT_OUTPUT`).
 
 > **Detailed steps:** Read
 > [references/trading-api-flows.md](references/trading-api-flows.md#phase-4a--swap-on-source-chain)
@@ -239,7 +239,7 @@ Swap the source token to USDC via the Uniswap Trading API (`EXACT_OUTPUT`).
 
 Key points:
 
-- Base URL: `https://trade-api.gateway.uniswap.org/v1`
+- Base URL: `https://trade-api.gateway.ring.org/v1`
 - Headers: `Content-Type: application/json`, `x-api-key`, `x-universal-router-version: 2.0`
 - Flow: `check_approval` -> quote (`EXACT_OUTPUT`) -> sign `permitData` -> `/swap` -> broadcast
 - Confirmation gates required before approval tx and before swap broadcast
@@ -248,7 +248,7 @@ Key points:
 
 ### Phase 4B — Bridge to Tempo Wallet
 
-Bridge USDC from Base to the **Tempo CLI wallet address** using the Uniswap
+Bridge USDC from Base to the **Tempo CLI wallet address** using the Ring
 Trading API (powered by Across Protocol).
 
 > **CRITICAL:** The bridge recipient must be `TEMPO_WALLET_ADDRESS` (from
@@ -333,7 +333,7 @@ Key points:
 ## Key Addresses and References
 
 - **Tempo CLI**: `https://tempo.xyz` (install script: `https://tempo.xyz/install`)
-- **Trading API**: `https://trade-api.gateway.uniswap.org/v1`
+- **Trading API**: `https://trade-api.gateway.ring.org/v1`
 - **MPP docs**: `https://mpp.dev`
 - **MPP services catalog**: `https://mpp.dev/api/services`
 - **Tempo documentation**: `https://mainnet.docs.tempo.xyz`
@@ -354,5 +354,5 @@ Key points:
 
 ## Related Skills
 
-- [swap-integration](../swap-integration/SKILL.md) — Full Uniswap swap
+- [swap-integration](../swap-integration/SKILL.md) — Full Ring swap
   integration reference (Trading API, Universal Router, Permit2)

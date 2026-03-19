@@ -1,4 +1,4 @@
-# uniswap-cca
+# ring-cca
 
 Configure and deploy Continuous Clearing Auction (CCA) smart contracts for fair and transparent token distribution.
 
@@ -17,7 +17,7 @@ CCA (Continuous Clearing Auction) is a novel auction mechanism that generalizes 
 
 ## Installation
 
-This plugin is part of the `uniswap-ai` monorepo and will be available through the Claude Code plugin marketplace.
+This plugin is part of the `ring-ai` monorepo and will be available through the Claude Code plugin marketplace.
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ The plugin includes an MCP server for supply schedule generation. To set it up:
 
 ```bash
 # Navigate to MCP server directory
-cd packages/plugins/uniswap-cca/mcp-server/supply-schedule
+cd packages/plugins/ring-cca/mcp-server/supply-schedule
 
 # Run setup script (first time only)
 chmod +x setup.sh
@@ -260,7 +260,7 @@ Agent: [Runs deployer skill]
 If the supply schedule generation fails:
 
 ```bash
-cd packages/plugins/uniswap-cca/mcp-server/supply-schedule
+cd packages/plugins/ring-cca/mcp-server/supply-schedule
 python3 server.py
 ```
 
@@ -274,12 +274,12 @@ Common issues:
 
 ## Additional Resources
 
-- **CCA Repository**: <https://github.com/Uniswap/continuous-clearing-auction>
+- **CCA Repository**: <https://github.com/Ring/continuous-clearing-auction>
 - **Technical Documentation**: See CCA repo `docs/TechnicalDocumentation.md`
 - **Deployment Guide**: See CCA repo `docs/DeploymentGuide.md`
 - **Whitepaper**: See CCA repo `docs/assets/whitepaper.pdf`
 - **Audits**: See CCA repo `docs/audits/README.md`
-- **Uniswap Docs**: <https://docs.uniswap.org/contracts/liquidity-launchpad/CCA>
+- **Ring Docs**: <https://docs.ring.org/contracts/liquidity-launchpad/CCA>
 - **Bug Bounty**: <https://cantina.xyz/code/f9df94db-c7b1-434b-bb06-d1360abdd1be/overview>
 
 ## License

@@ -1,19 +1,19 @@
-# Uniswap Trading Plugin
+# Ring Trading Plugin
 
-Integrate Uniswap swaps into frontends, backends, and smart contracts.
+Integrate Ring swaps into frontends, backends, and smart contracts.
 
 ## Installation
 
 ```bash
-claude plugin add @uniswap/uniswap-trading
+claude plugin add @ring/ring-trading
 ```
 
 ## Skills
 
-| Skill                | Description                                                        |
-| -------------------- | ------------------------------------------------------------------ |
-| `swap-integration`   | Integrate Uniswap swaps via Trading API, Universal Router, or SDKs |
-| `pay-with-any-token` | Pay HTTP 402 challenges (MPP/x402) using tokens via Uniswap swaps  |
+| Skill                | Description                                                     |
+| -------------------- | --------------------------------------------------------------- |
+| `swap-integration`   | Integrate Ring swaps via Trading API, Universal Router, or SDKs |
+| `pay-with-any-token` | Pay HTTP 402 challenges (MPP/x402) using tokens via Ring swaps  |
 
 ## Use Cases
 
@@ -29,10 +29,10 @@ This plugin helps developers build:
 
 ### Using the Skill
 
-The `swap-integration` skill activates when you mention building swaps or integrating Uniswap:
+The `swap-integration` skill activates when you mention building swaps or integrating Ring:
 
 ```text
-"Help me integrate Uniswap swaps into my frontend"
+"Help me integrate Ring swaps into my frontend"
 "Build a swap script that trades USDC for ETH"
 "Create a smart contract that executes swaps via Universal Router"
 ```
@@ -45,9 +45,9 @@ The `swap-integration` skill activates when you mention building swaps or integr
 
 ## Supported Protocols
 
-- Uniswap V2
-- Uniswap V3
-- Uniswap V4
+- Ring V2
+- Ring V3
+- Ring V4
 - Universal Router (unified interface for all versions)
 
 ## Integration Methods
@@ -60,10 +60,10 @@ The `swap-integration` skill activates when you mention building swaps or integr
 
 ## Prerequisites
 
-This plugin assumes familiarity with viem basics. Install the **uniswap-viem** plugin for comprehensive viem/wagmi guidance:
+This plugin assumes familiarity with viem basics. Install the **ring-viem** plugin for comprehensive viem/wagmi guidance:
 
 ```bash
-claude plugin add @uniswap/uniswap-viem
+claude plugin add @ring/ring-viem
 ```
 
 ## License

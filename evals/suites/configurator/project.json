@@ -3,14 +3,14 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "tags": ["type:eval-suite"],
-  "implicitDependencies": ["uniswap-cca", "evals"],
+  "implicitDependencies": ["ring-cca", "evals"],
   "targets": {
     "eval": {
       "executor": "nx:run-commands",
       "cache": true,
       "inputs": [
         "{projectRoot}/**/*",
-        "{workspaceRoot}/packages/plugins/uniswap-cca/skills/configurator/**/*",
+        "{workspaceRoot}/packages/plugins/ring-cca/skills/configurator/**/*",
         "{workspaceRoot}/evals/scripts/**/*",
         "{workspaceRoot}/evals/rubrics/**/*",
         "{workspaceRoot}/evals/promptfoo.yaml"

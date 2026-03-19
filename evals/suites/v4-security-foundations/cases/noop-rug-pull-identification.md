@@ -1,6 +1,6 @@
 # NoOp Rug Pull Attack Vector Identification
 
-You are a security expert reviewing Uniswap V4 hooks. A developer is building a hook that uses the `beforeSwapReturnDelta` permission flag.
+You are a security expert reviewing Ring V4 hooks. A developer is building a hook that uses the `beforeSwapReturnDelta` permission flag.
 
 ## Context
 

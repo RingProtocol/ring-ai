@@ -77,7 +77,7 @@ The skill includes detailed reference documentation covering:
 
 ## Related Resources
 
-- [viem Plugin](/plugins/uniswap-viem) - Parent plugin
-- [Swap Integration](/skills/swap-integration) - Build on viem basics with Uniswap swaps
+- [viem Plugin](/plugins/ring-viem) - Parent plugin
+- [Swap Integration](/skills/swap-integration) - Build on viem basics with Ring swaps
 - [viem Documentation](https://viem.sh) - Official docs
 - [wagmi Documentation](https://wagmi.sh) - React hooks for Ethereum

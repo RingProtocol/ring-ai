@@ -9,7 +9,7 @@
  *   node scripts/validate-plugin.cjs <plugin-path>
  *
  * Example:
- *   node scripts/validate-plugin.cjs packages/plugins/uniswap-hooks
+ *   node scripts/validate-plugin.cjs packages/plugins/ring-hooks
  *
  * Expected Plugin Structure:
  *   <plugin-name>/
@@ -224,7 +224,7 @@ const pluginPath = args.find((arg) => !arg.startsWith('--'));
 
 if (!pluginPath) {
   console.error('Usage: node scripts/validate-plugin.cjs <plugin-path> [--require-evals]');
-  console.error('Example: node scripts/validate-plugin.cjs packages/plugins/uniswap-hooks');
+  console.error('Example: node scripts/validate-plugin.cjs packages/plugins/ring-hooks');
   console.error('');
   console.error('Options:');
   console.error('  --require-evals  Fail if any skill is missing an eval suite');

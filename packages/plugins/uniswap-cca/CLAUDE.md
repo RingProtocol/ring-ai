@@ -1,4 +1,4 @@
-# CLAUDE.md - uniswap-cca
+# CLAUDE.md - ring-cca
 
 ## Overview
 
@@ -21,7 +21,7 @@ This plugin provides skills and MCP servers for configuring and deploying Contin
 ## File Structure
 
 ```text
-uniswap-cca/
+ring-cca/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── skills/
@@ -294,6 +294,6 @@ The configurator displays JSON output but does NOT automatically create files. U
 
 ## Additional Resources
 
-- **CCA Repository**: <https://github.com/Uniswap/continuous-clearing-auction>
-- **Uniswap Docs**: <https://docs.uniswap.org/contracts/liquidity-launchpad/CCA>
+- **CCA Repository**: <https://github.com/Ring/continuous-clearing-auction>
+- **Ring Docs**: <https://docs.ring.org/contracts/liquidity-launchpad/CCA>
 - **Bug Bounty**: <https://cantina.xyz/code/f9df94db-c7b1-434b-bb06-d1360abdd1be/overview>

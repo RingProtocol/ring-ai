@@ -1,6 +1,6 @@
 # Delta Accounting Understanding
 
-You are helping a developer understand Uniswap V4's delta accounting system for their hook implementation.
+You are helping a developer understand Ring V4's delta accounting system for their hook implementation.
 
 ## Context
 

@@ -1,20 +1,20 @@
 {
-  "name": "uniswap-hooks",
+  "name": "ring-hooks",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/plugins/uniswap-hooks",
+  "sourceRoot": "packages/plugins/ring-hooks",
   "projectType": "library",
-  "tags": ["type:plugin", "scope:uniswap"],
+  "tags": ["type:plugin", "scope:ring"],
   "targets": {
     "lint-markdown": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-hooks/**/*.md'"
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-hooks/**/*.md'"
       }
     },
     "validate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/validate-plugin.cjs packages/plugins/uniswap-hooks"
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-hooks"
       }
     }
   }

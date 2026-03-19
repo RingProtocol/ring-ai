@@ -17,7 +17,7 @@ defaultTest:
   options:
     timeout: 120000 # 2 minutes per case
   vars:
-    skill_content: file://../../../packages/plugins/uniswap-cca/skills/deployer/SKILL.md
+    skill_content: file://../../../packages/plugins/ring-cca/skills/deployer/SKILL.md
 
 # Test cases with specific assertions
 tests:

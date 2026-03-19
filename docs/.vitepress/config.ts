@@ -5,8 +5,8 @@ import { generateSidebar } from './sidebar';
 const docsDir = path.resolve(import.meta.dirname, '..');
 
 export default defineConfig({
-  title: 'Uniswap AI',
-  description: 'AI tools for building on the Uniswap protocol',
+  title: 'Ring AI',
+  description: 'AI tools for building on the Ring protocol',
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
@@ -41,11 +41,11 @@ export default defineConfig({
 
     sidebar: generateSidebar(docsDir),
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/uniswap/uniswap-ai' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/ringprotocol/ring-ai' }],
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2025-2026 Uniswap Labs',
+      copyright: 'Copyright © 2025-2026 Ring Labs',
     },
 
     search: {
@@ -53,7 +53,7 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/uniswap/uniswap-ai/edit/main/docs/:path',
+      pattern: 'https://github.com/ringprotocol/ring-ai/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
   },

@@ -1,22 +1,13 @@
 {
-  "name": "uniswap-viem",
+  "name": "ring-viem",
   "version": "1.1.3",
   "description": "EVM blockchain integration using viem and wagmi - client setup, reading/writing data, accounts, contract interactions, and React hooks",
   "author": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "ai-services@ring.org"
   },
-  "homepage": "https://github.com/uniswap/uniswap-ai",
-  "keywords": [
-    "viem",
-    "wagmi",
-    "evm",
-    "blockchain",
-    "ethereum",
-    "web3",
-    "react",
-    "uniswap-trading"
-  ],
+  "homepage": "https://github.com/ringprotocol/ring-ai",
+  "keywords": ["viem", "wagmi", "evm", "blockchain", "ethereum", "web3", "react", "ring-trading"],
   "license": "MIT",
   "skills": ["./skills/viem-integration"],
   "agents": ["./agents/viem-integration-expert.md"]

@@ -10,7 +10,7 @@ const path = require('path');
 
 const skillPath = path.resolve(
   __dirname,
-  '../../../packages/plugins/uniswap-driver/skills/liquidity-planner/SKILL.md'
+  '../../../packages/plugins/ring-driver/skills/liquidity-planner/SKILL.md'
 );
 const skillContent = fs.readFileSync(skillPath, 'utf-8');
 

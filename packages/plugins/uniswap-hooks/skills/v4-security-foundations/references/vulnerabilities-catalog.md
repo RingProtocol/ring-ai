@@ -1,6 +1,6 @@
 # v4 Hook Vulnerabilities Catalog
 
-Common vulnerability patterns in Uniswap v4 hooks with detection methods and mitigations.
+Common vulnerability patterns in Ring v4 hooks with detection methods and mitigations.
 
 ## Critical Vulnerabilities
 

@@ -13,7 +13,7 @@
 set -euo pipefail
 
 # 1Password item containing the .env as a note
-OP_ITEM="uniswap/uniswap-ai/evals/.env"
+OP_ITEM="ring/ring-ai/evals/.env"
 
 # Output file
 ENV_FILE="evals/.env"

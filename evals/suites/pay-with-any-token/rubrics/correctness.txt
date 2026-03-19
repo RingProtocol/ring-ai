@@ -14,7 +14,7 @@ Required Elements (Must Include):
    Uses native USDC or USDC-e as bridge asset for Base→Tempo paths, or USDC for Ethereum→Tempo paths
 
 3. Trading API Usage
-   References the correct base URL (trade-api.gateway.uniswap.org)
+   References the correct base URL (trade-api.gateway.ring.org)
    Uses EXACT_OUTPUT type for the swap quote (NOT EXACT_INPUT — penalize if EXACT_INPUT is used)
    Includes check_approval step before the swap
 

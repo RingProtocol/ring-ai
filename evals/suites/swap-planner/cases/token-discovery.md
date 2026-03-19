@@ -14,7 +14,7 @@ What memecoins are trending on Base right now? I want to find something interest
 1. Use DexScreener or similar data providers to find trending tokens
 2. Present token options with relevant metrics (price, volume, liquidity)
 3. Verify token contracts on-chain before recommending
-4. After selection, generate a Uniswap deep link for the swap
+4. After selection, generate a Ring deep link for the swap
 
 ## Expected Output
 

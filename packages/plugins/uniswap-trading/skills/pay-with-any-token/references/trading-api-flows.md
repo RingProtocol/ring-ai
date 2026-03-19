@@ -1,7 +1,7 @@
 # Trading API Flows
 
 Step-by-step bash scripts for swap and bridge operations using the
-Uniswap Trading API (`https://trade-api.gateway.uniswap.org/v1`).
+Ring Trading API (`https://trade-api.gateway.ring.org/v1`).
 
 ## Table of Contents
 
@@ -10,7 +10,7 @@ Uniswap Trading API (`https://trade-api.gateway.uniswap.org/v1`).
 
 ## Phase 4A — Swap on Source Chain
 
-Use the Uniswap Trading API to swap the source token to USDC (the bridge
+Use the Ring Trading API to swap the source token to USDC (the bridge
 asset). This is an EXACT_OUTPUT swap — the payee's amount determines how much
 USDC to acquire.
 
@@ -37,7 +37,7 @@ USDC_E_AMOUNT_NEEDED="$REQUIRED_AMOUNT"  # For EXACT_OUTPUT: target = payment am
 > `slippageTolerance: 0.5` in the quote body means **0.5%** (not 0.005). The
 > Trading API accepts slippage as a percentage value.
 
-**Base URL**: `https://trade-api.gateway.uniswap.org/v1`
+**Base URL**: `https://trade-api.gateway.ring.org/v1`
 
 **Required headers**:
 
@@ -60,7 +60,7 @@ APPROVAL_BODY=$(jq -n \
   --argjson chainId "$SOURCE_CHAIN_ID" \
   '{walletAddress: $wallet, token: $token, amount: $amount, chainId: $chainId}')
 
-curl -s -X POST https://trade-api.gateway.uniswap.org/v1/check_approval \
+curl -s -X POST https://trade-api.gateway.ring.org/v1/check_approval \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   -H "x-universal-router-version: 2.0" \
@@ -102,7 +102,7 @@ QUOTE_BODY=$(jq -n \
     routingPreference: "BEST_PRICE"
   }')
 
-curl -s -X POST https://trade-api.gateway.uniswap.org/v1/quote \
+curl -s -X POST https://trade-api.gateway.ring.org/v1/quote \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   -H "x-universal-router-version: 2.0" \
@@ -180,7 +180,7 @@ else
   SWAP_BODY=$(echo "$CLEAN_QUOTE" | jq --arg sig "$PERMIT2_SIGNATURE" '. + {signature: $sig}')
 fi
 
-curl -s -X POST https://trade-api.gateway.uniswap.org/v1/swap \
+curl -s -X POST https://trade-api.gateway.ring.org/v1/swap \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   -H "x-universal-router-version: 2.0" \
@@ -247,7 +247,7 @@ echo "USDC balance after swap: $USDC_AFTER_HUMAN USDC (need at least $USDC_NEEDE
 > USDC_E_ADDRESS="0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"  # USDC on Base
 > ```
 
-Use the Uniswap Trading API to bridge USDC from Base to USDC.e on Tempo. The
+Use the Ring Trading API to bridge USDC from Base to USDC.e on Tempo. The
 bridge is powered by Across Protocol and is fully abstracted by the API —
 no manual contract calls required.
 
@@ -265,7 +265,7 @@ BRIDGE_TOKEN_IN="0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"   # USDC on Base
 BRIDGE_TOKEN_OUT="0x20C000000000000000000000b9537d11c60E8b50"   # USDC.e on Tempo
 BRIDGE_AMOUNT="$USDC_E_AMOUNT_NEEDED"
 
-APPROVAL=$(curl -s "https://trade-api.gateway.uniswap.org/v1/check_approval" \
+APPROVAL=$(curl -s "https://trade-api.gateway.ring.org/v1/check_approval" \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   --data "$(jq -n \
@@ -301,7 +301,7 @@ echo "Approval confirmed: $APPROVE_HASH"
 ### Step 4B-2 — Get bridge quote (EXACT_OUTPUT)
 
 ```bash
-BRIDGE_QUOTE=$(curl -s "https://trade-api.gateway.uniswap.org/v1/quote" \
+BRIDGE_QUOTE=$(curl -s "https://trade-api.gateway.ring.org/v1/quote" \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   --data "$(jq -n \
@@ -341,7 +341,7 @@ echo "Bridge quote: quoteId=$BRIDGE_QUOTE_ID fee=$BRIDGE_FEE eta=$BRIDGE_ETA"
 ### Step 4B-3 — Execute the bridge
 
 ```bash
-BRIDGE_RESPONSE=$(curl -s "https://trade-api.gateway.uniswap.org/v1/swap" \
+BRIDGE_RESPONSE=$(curl -s "https://trade-api.gateway.ring.org/v1/swap" \
   -H "Content-Type: application/json" \
   -H "x-api-key: $UNISWAP_API_KEY" \
   --data "$(jq -n \

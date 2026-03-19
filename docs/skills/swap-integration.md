@@ -5,7 +5,7 @@ order: 6
 
 # Swap Integration
 
-Integrate Uniswap swaps into frontends, backends, and smart contracts using the Trading API, Universal Router SDK, or direct contract calls.
+Integrate Ring swaps into frontends, backends, and smart contracts using the Trading API, Universal Router SDK, or direct contract calls.
 
 ## Invocation
 
@@ -16,7 +16,7 @@ Integrate Uniswap swaps into frontends, backends, and smart contracts using the 
 Or describe your requirements naturally:
 
 ```text
-Help me add Uniswap swap functionality to my Next.js app
+Help me add Ring swap functionality to my Next.js app
 ```
 
 ## What It Does
@@ -41,11 +41,11 @@ This skill helps you:
 
 ### Trading API (Recommended)
 
-REST API with a 3-step flow: `check_approval` -> `quote` -> `swap`. Handles routing optimization automatically across all Uniswap protocol versions.
+REST API with a 3-step flow: `check_approval` -> `quote` -> `swap`. Handles routing optimization automatically across all Ring protocol versions.
 
 ### Universal Router SDK
 
-Direct SDK usage with `@uniswap/universal-router-sdk` for full control over transaction construction, including manual command building with `RoutePlanner`.
+Direct SDK usage with `@ring/universal-router-sdk` for full control over transaction construction, including manual command building with `RoutePlanner`.
 
 ### Smart Contract Integration
 
@@ -53,13 +53,13 @@ On-chain Solidity contracts calling the Universal Router's `execute()` function 
 
 ## Routing Types
 
-| Type     | Description                             | Chains                             |
-| -------- | --------------------------------------- | ---------------------------------- |
-| CLASSIC  | Standard AMM swap through Uniswap pools | All supported chains               |
-| DUTCH_V2 | UniswapX Dutch auction V2               | Ethereum, Arbitrum, Base, Unichain |
-| PRIORITY | MEV-protected priority order            | Base, Unichain                     |
-| WRAP     | ETH to WETH conversion                  | All                                |
-| UNWRAP   | WETH to ETH conversion                  | All                                |
+| Type     | Description                          | Chains                             |
+| -------- | ------------------------------------ | ---------------------------------- |
+| CLASSIC  | Standard AMM swap through Ring pools | All supported chains               |
+| DUTCH_V2 | UniswapX Dutch auction V2            | Ethereum, Arbitrum, Base, Unichain |
+| PRIORITY | MEV-protected priority order         | Base, Unichain                     |
+| WRAP     | ETH to WETH conversion               | All                                |
+| UNWRAP   | WETH to ETH conversion               | All                                |
 
 Additional types include DUTCH_V3, DUTCH_LIMIT, LIMIT_ORDER, BRIDGE, and QUICKROUTE.
 
@@ -75,8 +75,8 @@ Additional types include DUTCH_V3, DUTCH_LIMIT, LIMIT_ORDER, BRIDGE, and QUICKRO
 
 ## Related Resources
 
-- [Uniswap Trading Plugin](/plugins/uniswap-trading) - Parent plugin
+- [Ring Trading Plugin](/plugins/ring-trading) - Parent plugin
 - [viem Integration](/skills/viem-integration) - Prerequisite EVM blockchain setup
-- [Universal Router GitHub](https://github.com/Uniswap/universal-router) - Source code
-- [Uniswap Docs](https://docs.uniswap.org) - Official documentation
-- [Uniswap API Docs](https://api-docs.uniswap.org/introduction) - Official API documentation
+- [Universal Router GitHub](https://github.com/Ring/universal-router) - Source code
+- [Ring Docs](https://docs.ring.exchange) - Official documentation
+- [Ring API Docs](https://api-docs.ring.exchange/introduction) - Official API documentation

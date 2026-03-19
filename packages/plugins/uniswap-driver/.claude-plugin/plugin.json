@@ -1,13 +1,13 @@
 {
-  "name": "uniswap-driver",
+  "name": "ring-driver",
   "version": "0.5.2",
-  "description": "AI-powered assistance for discovering tokens, planning Uniswap swaps and liquidity positions, generating deep links to execute in the Uniswap interface",
+  "description": "AI-powered assistance for discovering tokens, planning Ring swaps and liquidity positions, generating deep links to execute in the Ring interface",
   "author": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "ai-services@ring.org"
   },
-  "homepage": "https://github.com/Uniswap/uniswap-ai",
-  "keywords": ["uniswap", "swap", "liquidity", "defi", "deep-links", "token-discovery", "trending"],
+  "homepage": "https://github.com/Ring/ring-ai",
+  "keywords": ["ring", "swap", "liquidity", "defi", "deep-links", "token-discovery", "trending"],
   "license": "MIT",
   "skills": ["./skills/swap-planner", "./skills/liquidity-planner"]
 }

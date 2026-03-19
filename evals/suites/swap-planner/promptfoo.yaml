@@ -17,7 +17,7 @@ defaultTest:
   options:
     timeout: 120000 # 2 minutes per case
   vars:
-    skill_content: file://../../../packages/plugins/uniswap-driver/skills/swap-planner/SKILL.md
+    skill_content: file://../../../packages/plugins/ring-driver/skills/swap-planner/SKILL.md
 
 # Test cases with specific assertions
 tests:
@@ -33,8 +33,8 @@ tests:
       # Must include a deep link
       - type: contains-any
         value:
-          - 'app.uniswap.org'
-          - 'uniswap.org'
+          - 'app.ring.exchange'
+          - 'ring.exchange'
       # Must reference token verification
       - type: contains-any
         value:
@@ -85,5 +85,5 @@ tests:
       # Must include deep link
       - type: contains-any
         value:
-          - 'app.uniswap.org'
-          - 'uniswap.org'
+          - 'app.ring.exchange'
+          - 'ring.exchange'

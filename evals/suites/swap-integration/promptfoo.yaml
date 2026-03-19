@@ -17,7 +17,7 @@ defaultTest:
   options:
     timeout: 120000 # 2 minutes per case
   vars:
-    skill_content: file://../../../packages/plugins/uniswap-trading/skills/swap-integration/SKILL.md
+    skill_content: file://../../../packages/plugins/ring-trading/skills/swap-integration/SKILL.md
 
 # Test cases with specific assertions
 tests:
@@ -38,7 +38,7 @@ tests:
 
       # Deterministic checks for required patterns
       - type: contains
-        value: 'trade-api.gateway.uniswap.org'
+        value: 'trade-api.gateway.ring.exchange'
       - type: contains
         value: 'check_approval'
       - type: contains
@@ -63,7 +63,7 @@ tests:
 
       # Deterministic checks for ETH-specific patterns
       - type: contains
-        value: 'trade-api.gateway.uniswap.org'
+        value: 'trade-api.gateway.ring.exchange'
       - type: contains
         value: '/quote'
       - type: contains
@@ -126,7 +126,7 @@ tests:
 
       # Must include Trading API flow
       - type: contains
-        value: 'trade-api.gateway.uniswap.org'
+        value: 'trade-api.gateway.ring.exchange'
 
       # Must reference smart account / ERC-4337 patterns
       - type: contains

@@ -1,6 +1,6 @@
 # V4 Security Foundations Eval Suite
 
-Evaluation suite for the `v4-security-foundations` skill, which provides security-first guidance for Uniswap V4 hook development.
+Evaluation suite for the `v4-security-foundations` skill, which provides security-first guidance for Ring V4 hook development.
 
 ## Overview
 

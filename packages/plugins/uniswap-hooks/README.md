@@ -1,10 +1,10 @@
-# uniswap-hooks
+# ring-hooks
 
-AI-powered, security-first assistance for creating Uniswap v4 hooks.
+AI-powered, security-first assistance for creating Ring v4 hooks.
 
 ## Overview
 
-This Claude Code plugin provides skills for developing Uniswap v4 hooks with a strong emphasis on security. It covers custom fee hooks and other advanced hook patterns—all built on a foundation of security best practices.
+This Claude Code plugin provides skills for developing Ring v4 hooks with a strong emphasis on security. It covers custom fee hooks and other advanced hook patterns—all built on a foundation of security best practices.
 
 **Recommended Learning Path**: Complete `v4-security-foundations` before building specific hook types.
 
@@ -39,26 +39,26 @@ Or ask about security:
 ### Via Skills CLI (Any Agent)
 
 ```bash
-npx skills add Uniswap/uniswap-ai
+npx skills add Ring/ring-ai
 ```
 
 ### Via Claude Code Marketplace
 
 ```bash
-/plugin marketplace add uniswap/uniswap-ai
-/plugin install uniswap-hooks
+/plugin marketplace add ring/ring-ai
+/plugin install ring-hooks
 ```
 
 ## Requirements
 
 - Claude Code with plugin support
-- Familiarity with Uniswap v4 hooks architecture
+- Familiarity with Ring v4 hooks architecture
 
 ## Resources
 
-- [Uniswap v4 Documentation](https://docs.uniswap.org/contracts/v4/overview)
-- [v4 Hooks Guide](https://docs.uniswap.org/contracts/v4/concepts/hooks)
-- [Hook Examples](https://github.com/Uniswap/v4-periphery/tree/main/src/lens)
+- [Ring v4 Documentation](https://docs.ring.org/contracts/v4/overview)
+- [v4 Hooks Guide](https://docs.ring.org/contracts/v4/concepts/hooks)
+- [Hook Examples](https://github.com/Ring/v4-periphery/tree/main/src/lens)
 
 ## Acknowledgments
 

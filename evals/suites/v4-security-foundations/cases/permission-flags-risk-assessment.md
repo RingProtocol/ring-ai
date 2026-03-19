@@ -1,6 +1,6 @@
 # Permission Flags Risk Assessment
 
-You are auditing a Uniswap V4 hook and need to assess the risk level of its permission flags configuration.
+You are auditing a Ring V4 hook and need to assess the risk level of its permission flags configuration.
 
 ## Context
 

@@ -1,8 +1,8 @@
-# CLAUDE.md - Uniswap AI Project Guidelines
+# CLAUDE.md - Ring AI Project Guidelines
 
 ## Overview
 
-This is the **uniswap-ai** monorepo providing Uniswap-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the Uniswap ecosystem.
+This is the **ring-ai** monorepo providing Ring-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the Ring ecosystem.
 
 ## Core Requirements
 
@@ -37,14 +37,14 @@ After making any code changes, Claude Code MUST:
 
 ## Package Scopes
 
-| Type    | Scope      | npm | Marketplace                   |
-| ------- | ---------- | --- | ----------------------------- |
-| Plugins | `@uniswap` | No  | Yes (Claude Code Marketplace) |
+| Type    | Scope   | npm | Marketplace                   |
+| ------- | ------- | --- | ----------------------------- |
+| Plugins | `@ring` | No  | Yes (Claude Code Marketplace) |
 
 ## Repository Structure
 
 ```text
-uniswap-ai/
+ring-ai/
 ├── .github/
 │   ├── workflows/           # CI/CD workflows
 │   ├── actions/             # Reusable composite actions
@@ -60,13 +60,10 @@ uniswap-ai/
 │   ├── suites/              # Per-skill eval suites
 │   └── templates/           # Templates for new suites
 ├── packages/
-│   └── plugins/             # Claude Code plugins
-│       ├── uniswap-cca/     # Continuous Clearing Auction (CCA) plugin
-│       ├── uniswap-driver/  # Swap & liquidity deep link planning
-│       ├── uniswap-hooks/   # Uniswap v4 hooks plugin
+│   └── plugins/             # Claude Code pluginsplugin
+│       ├── ring-driver/     # Swap & liquidity deep link planning
 │       ├── ring-wallet/     # Ring Wallet DApp integration guidance
-│       ├── uniswap-trading/ # Uniswap swap integration
-│       └── uniswap-viem/    # EVM blockchain integration (viem/wagmi)
+│       ├── ring-trading/    # Ring trading integration
 ├── scripts/                 # Build/validation scripts
 ├── nx.json
 ├── package.json
@@ -252,7 +249,7 @@ Check all README.md files in directories with changes and update if appropriate.
 
 ## Skills
 
-Skills are discoverable via the [skills.sh CLI](https://skills.sh) (`npx skills add Uniswap/uniswap-ai`).
+Skills are discoverable via the [skills.sh CLI](https://skills.sh) (`npx skills add ringprotocol/ring-ai`).
 
 ### Adding New Skills
 

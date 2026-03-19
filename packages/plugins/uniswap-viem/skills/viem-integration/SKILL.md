@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash(npm:*), Bash(npx:*), WebFetch
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '1.0.0'
 ---
 
@@ -196,13 +196,13 @@ For deeper coverage of specific topics:
 
 ## Related Plugins
 
-Once you're comfortable with viem basics, the **uniswap-trading** plugin provides comprehensive Uniswap swap integration:
+Once you're comfortable with viem basics, the **ring-trading** plugin provides comprehensive Ring swap integration:
 
-- Uniswap Trading API integration
+- Ring Trading API integration
 - Universal Router SDK usage
 - Token swap implementations
 
-Install it with: `claude plugin add @uniswap/uniswap-trading`
+Install it with: `claude plugin add @ring/ring-trading`
 
 ---
 

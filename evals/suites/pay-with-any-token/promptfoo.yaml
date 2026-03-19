@@ -38,7 +38,7 @@ tests:
         value: '402'
 
       - type: contains
-        value: 'trade-api.gateway.uniswap.org'
+        value: 'trade-api.gateway.ring.org'
 
       - type: contains
         value: 'EXACT_OUTPUT'

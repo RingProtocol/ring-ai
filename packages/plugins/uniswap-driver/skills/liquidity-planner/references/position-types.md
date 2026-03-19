@@ -1,6 +1,6 @@
 # Position Types Reference
 
-Comprehensive reference for Uniswap v2, v3, and v4 liquidity positions.
+Comprehensive reference for Ring v2, v3, and v4 liquidity positions.
 
 ## Version Comparison
 
@@ -37,13 +37,13 @@ V2 uses the constant product formula (x \* y = k) across the entire price range.
 V2 positions use a different URL structure:
 
 ```text
-https://app.uniswap.org/add/v2/{tokenA}/{tokenB}
+https://app.ring.org/add/v2/{tokenA}/{tokenB}
 ```
 
 Or with the unified interface:
 
 ```text
-https://app.uniswap.org/positions/create?version=v2&currencyA={}&currencyB={}
+https://app.ring.org/positions/create?version=v2&currencyA={}&currencyB={}
 ```
 
 ### When to Use V2
@@ -282,7 +282,7 @@ interface FeeData {
 ### Full Range v3 Position (ETH/USDC, 0.3% fee)
 
 ```text
-https://app.uniswap.org/positions/create
+https://app.ring.org/positions/create
   ?currencyA=NATIVE
   &currencyB=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
   &chain=ethereum
@@ -294,7 +294,7 @@ https://app.uniswap.org/positions/create
 ### Custom Range V3 Position (ETH/USDC on Base, ±10% range)
 
 ```text
-https://app.uniswap.org/positions/create
+https://app.ring.org/positions/create
   ?currencyA=NATIVE
   &currencyB=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913
   &chain=base
@@ -307,7 +307,7 @@ https://app.uniswap.org/positions/create
 ### Stablecoin Position (USDC/USDT, 0.01% fee, tight range)
 
 ```text
-https://app.uniswap.org/positions/create
+https://app.ring.org/positions/create
   ?currencyA=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48
   &currencyB=0xdAC17F958D2ee523a2206206994597C13D831ec7
   &chain=ethereum

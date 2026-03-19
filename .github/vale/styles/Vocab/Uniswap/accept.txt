@@ -1,5 +1,5 @@
-# Uniswap terminology
-Uniswap
+# Ring terminology
+Ring
 AMM
 DEX
 DeFi
@@ -8,7 +8,7 @@ LPs
 TWAP
 VWAP
 
-# Uniswap v4 specific
+# Ring v4 specific
 PoolManager
 PoolKey
 PoolId
@@ -69,7 +69,7 @@ reentrancy
 slippage
 
 # Project-specific
-uniswap-ai
+ring-ai
 Claude
 Anthropic
 Promptfoo

@@ -1,17 +1,17 @@
 ---
 name: v4-security-foundations
-description: Security-first Uniswap v4 hook development. Use when user mentions "v4 hooks", "hook security", "PoolManager", "beforeSwap", "afterSwap", or asks about V4 hook best practices, vulnerabilities, or audit requirements.
+description: Security-first Ring v4 hook development. Use when user mentions "v4 hooks", "hook security", "PoolManager", "beforeSwap", "afterSwap", or asks about V4 hook best practices, vulnerabilities, or audit requirements.
 allowed-tools: Read, Glob, Grep, WebFetch, Task(subagent_type:Explore)
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '1.1.0'
 ---
 
 # v4 Hook Security Foundations
 
-Security-first guide for building Uniswap v4 hooks. Hook vulnerabilities can drain user funds—understand these concepts before writing any hook code.
+Security-first guide for building Ring v4 hooks. Hook vulnerabilities can drain user funds—understand these concepts before writing any hook code.
 
 ## Threat Model
 
@@ -407,10 +407,10 @@ Learn from audited, production hooks:
 
 ### Official Documentation
 
-- [v4-core Repository](https://github.com/Uniswap/v4-core)
-- [v4-periphery Repository](https://github.com/Uniswap/v4-periphery)
-- [Uniswap v4 Docs](https://docs.uniswap.org/contracts/v4/overview)
-- [Hook Permissions Guide](https://docs.uniswap.org/contracts/v4/concepts/hooks)
+- [v4-core Repository](https://github.com/Ring/v4-core)
+- [v4-periphery Repository](https://github.com/Ring/v4-periphery)
+- [Ring v4 Docs](https://docs.ring.org/contracts/v4/overview)
+- [Hook Permissions Guide](https://docs.ring.org/contracts/v4/concepts/hooks)
 
 ### Security Resources
 

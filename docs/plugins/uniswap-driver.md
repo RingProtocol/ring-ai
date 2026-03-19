@@ -1,16 +1,16 @@
 ---
-title: Uniswap Driver
+title: Ring Driver
 order: 7
 ---
 
-# Uniswap Driver
+# Ring Driver
 
-AI-powered assistance for discovering tokens, planning Uniswap swaps and liquidity positions, and generating deep links.
+AI-powered assistance for discovering tokens, planning Ring swaps and liquidity positions, and generating deep links.
 
 ## Installation
 
 ```bash
-/plugin install uniswap-driver
+/plugin install ring-driver
 ```
 
 ## Skills
@@ -24,7 +24,7 @@ AI-powered assistance for discovering tokens, planning Uniswap swaps and liquidi
 
 ### Swap Deep Links
 
-Base URL: `https://app.uniswap.org/swap`
+Base URL: `https://app.ring.org/swap`
 
 | Parameter        | Description                      | Example                        |
 | ---------------- | -------------------------------- | ------------------------------ |
@@ -36,7 +36,7 @@ Base URL: `https://app.uniswap.org/swap`
 
 ### Liquidity Deep Links
 
-Base URL: `https://app.uniswap.org/positions/create`
+Base URL: `https://app.ring.org/positions/create`
 
 | Parameter   | Description                | Example                               |
 | ----------- | -------------------------- | ------------------------------------- |
@@ -65,11 +65,11 @@ Base URL: `https://app.uniswap.org/positions/create`
 
 ## Output Format
 
-Skills output a summary of the operation, a clickable deep link URL, and any relevant warnings. The deep link opens directly in the Uniswap web interface with pre-filled parameters.
+Skills output a summary of the operation, a clickable deep link URL, and any relevant warnings. The deep link opens directly in the Ring web interface with pre-filled parameters.
 
 ## Related
 
 - [Plugins Overview](/plugins/) - All available plugins
 - [Skills](/skills/) - All available skills
-- [Uniswap Interface](https://app.uniswap.org)
-- [Uniswap Docs](https://docs.uniswap.org)
+- [Ring Interface](https://app.ring.org)
+- [Ring Docs](https://docs.ring.org)

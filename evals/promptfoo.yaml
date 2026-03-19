@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
-description: 'Uniswap AI Plugin Evaluations'
+description: 'Ring AI Plugin Evaluations'
 
 # Default provider
 # Auth: Uses ANTHROPIC_API_KEY (run `nx run evals:setup` to configure from 1Password)

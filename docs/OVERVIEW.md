@@ -1,61 +1,41 @@
-# Uniswap AI
+# Ring AI
 
-Uniswap-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the trading API.
+Ring-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the trading API.
 
 ## Overview
 
-This repository provides Claude Code plugins and AI development tools specifically designed for building on the Uniswap protocol.
+This repository provides Claude Code plugins and AI development tools specifically designed for building on the Ring protocol.
 
 ## Installation
 
 ### Skills CLI (Any Agent)
 
 ```bash
-# Install all Uniswap AI skills via the skills.sh CLI
-npx skills add Uniswap/uniswap-ai
+# Install all Ring AI skills via the skills.sh CLI
+npx skills add ringprotocol/ring-ai
 ```
 
 ### Claude Code Marketplace
 
-```bash
-# Install the uniswap-ai plugin marketplace
-/plugin marketplace add uniswap/uniswap-ai
-
-# Install a specific plugin
-/plugin install uniswap-hooks
-```
+````bash
+# Install the ring-ai plugin marketplace
+/plugin marketplace add ringprotocol/ring-ai
 
 ## Plugins
 
-### uniswap-hooks
 
-AI-powered, security-first assistance for creating Uniswap v4 hooks.
+### ring-trading
 
-**Skills:** `v4-security-foundations`
-
-### uniswap-trading
-
-Integrate Uniswap swaps via Trading API, Universal Router SDK, or direct smart contract calls.
+Integrate Ring swaps via Trading API, Universal Router SDK, or direct smart contract calls.
 
 **Skills:** `swap-integration`
 
-### uniswap-cca
+### ring-driver
 
-Configure and deploy Continuous Clearing Auction (CCA) smart contracts for token distribution.
-
-**Skills:** `configurator`, `deployer` | **MCP Servers:** `cca-supply-schedule`
-
-### uniswap-driver
-
-Plan Uniswap swaps and liquidity positions with deep link generation for the Uniswap interface.
+Plan Ring swaps and liquidity positions with deep link generation for the Ring interface.
 
 **Skills:** `swap-planner`, `liquidity-planner`
 
-### uniswap-viem
-
-Foundational EVM blockchain integration using viem and wagmi.
-
-**Skills:** `viem-integration`
 
 ## Agent-Agnostic Design
 
@@ -92,12 +72,12 @@ npx nx run-many -t test
 
 # Run linting
 npx nx run-many -t lint
-```
+````
 
 ### Project Structure
 
 ```text
-uniswap-ai/
+ring-ai/
 ├── packages/
 │   └── plugins/         # Claude Code plugins (skills live here)
 ├── evals/               # AI tool evaluations (Promptfoo)
@@ -123,14 +103,14 @@ PRs are automatically validated by several workflows:
 
 If the docs check flags missing documentation updates, you can apply the suggested changes directly from the PR comments.
 
-See [.github/workflows/CLAUDE.md](https://github.com/Uniswap/uniswap-ai/blob/main/.github/workflows/CLAUDE.md) for detailed CI documentation.
+See [.github/workflows/CLAUDE.md](https://github.com/ringprotocol/ring-ai/blob/main/.github/workflows/CLAUDE.md) for detailed CI documentation.
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/Uniswap/uniswap-ai/blob/main/LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/ringprotocol/ring-ai/blob/main/LICENSE) for details.
 
 ## Links
 
-- [Uniswap API Docs](https://api-docs.uniswap.org/introduction)
-- [Uniswap v4 Docs](https://docs.uniswap.org/contracts/v4/overview)
+- [Ring API Docs](https://api-docs.ring.exchange/introduction)
+- [Ring v4 Docs](https://docs.ring.exchange/contracts/v4/overview)
 - [Claude Code](https://claude.ai/code)

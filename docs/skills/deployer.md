@@ -58,7 +58,7 @@ This skill emphasizes security at every step:
 
 ## Related Resources
 
-- [CCA Plugin](/plugins/uniswap-cca) - Parent plugin
+- [CCA Plugin](/plugins/ring-cca) - Parent plugin
 - [CCA Configurator](/skills/configurator) - Configure auction parameters
-- [CCA Repository](https://github.com/Uniswap/continuous-clearing-auction) - Source code
-- [Uniswap CCA Docs](https://docs.uniswap.org/contracts/liquidity-launchpad/CCA) - Official documentation
+- [CCA Repository](https://github.com/Ring/continuous-clearing-auction) - Source code
+- [Ring CCA Docs](https://docs.ring.org/contracts/liquidity-launchpad/CCA) - Official documentation

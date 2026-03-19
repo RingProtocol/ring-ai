@@ -6,7 +6,7 @@ Build a swap integration that executes through an ERC-4337 smart account on Base
 
 - TypeScript/Node.js backend service
 - Need to swap USDC to ETH on Base (chain ID 8453)
-- Using the Uniswap Trading API through an ERC-4337 smart account
+- Using the Ring Trading API through an ERC-4337 smart account
 - The smart account uses delegation for executing swaps
 - After swap, ETH should be native ETH (not WETH)
 
@@ -30,4 +30,4 @@ Build a swap integration that executes through an ERC-4337 smart account on Base
 
 ## Expected Output
 
-A working TypeScript implementation that demonstrates executing Uniswap swaps through an ERC-4337 smart account with delegation, including L2 WETH handling and rate limiting.
+A working TypeScript implementation that demonstrates executing Ring swaps through an ERC-4337 smart account with delegation, including L2 WETH handling and rate limiting.

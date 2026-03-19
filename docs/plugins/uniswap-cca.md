@@ -1,16 +1,16 @@
 ---
-title: Uniswap CCA
+title: Ring CCA
 order: 4
 ---
 
-# Uniswap CCA
+# Ring CCA
 
 Configure and deploy Continuous Clearing Auction (CCA) smart contracts for token distribution.
 
 ## Installation
 
 ```bash
-/plugin install uniswap-cca
+/plugin install ring-cca
 ```
 
 ## Skills
@@ -73,5 +73,5 @@ Uses `ContinuousClearingAuctionFactory` (v1.1.0) at canonical address `0xCCccCcC
 
 - [Plugins Overview](/plugins/) - All available plugins
 - [Skills](/skills/) - All available skills
-- [CCA Repository](https://github.com/Uniswap/continuous-clearing-auction)
-- [Uniswap CCA Docs](https://docs.uniswap.org/contracts/liquidity-launchpad/CCA)
+- [CCA Repository](https://github.com/Ring/continuous-clearing-auction)
+- [Ring CCA Docs](https://docs.ring.org/contracts/liquidity-launchpad/CCA)

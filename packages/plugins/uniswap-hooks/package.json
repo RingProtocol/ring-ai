@@ -1,19 +1,19 @@
 {
-  "name": "@uniswap/uniswap-hooks",
+  "name": "@ring/ring-hooks",
   "version": "0.0.1",
   "private": true,
-  "description": "AI-powered assistance for creating Uniswap v4 hooks - includes custom fee hooks and more",
-  "author": "Uniswap Labs <ai-services@uniswap.org>",
+  "description": "AI-powered assistance for creating Ring v4 hooks - includes custom fee hooks and more",
+  "author": "Ring Labs <ai-services@ring.org>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uniswap/uniswap-ai.git",
-    "directory": "packages/plugins/uniswap-hooks"
+    "url": "https://github.com/ringprotocol/ring-ai.git",
+    "directory": "packages/plugins/ring-hooks"
   },
   "keywords": [
     "claude-code",
     "plugin",
-    "uniswap",
+    "ring",
     "hooks",
     "v4",
     "defi",

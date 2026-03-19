@@ -1,21 +1,21 @@
 ---
 name: swap-integration
-description: Integrate Uniswap swaps into applications. Use when user says "integrate swaps", "uniswap", "trading api", "add swap functionality", "build a swap frontend", "create a swap script", "smart contract swap integration", "use Universal Router", "Trading API", or mentions swapping tokens via Uniswap.
+description: Integrate Ring swaps into applications. Use when user says "integrate swaps", "ring", "trading api", "add swap functionality", "build a swap frontend", "create a swap script", "smart contract swap integration", "use Universal Router", "Trading API", or mentions swapping tokens via Ring.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(npm:*), Bash(npx:*), Bash(yarn:*), Bash(curl:*), WebFetch, Task(subagent_type:swap-integration-expert)
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '1.3.0'
 ---
 
 # Swap Integration
 
-Integrate Uniswap swaps into frontends, backends, and smart contracts.
+Integrate Ring swaps into frontends, backends, and smart contracts.
 
 ## Prerequisites
 
-This skill assumes familiarity with viem basics (client setup, account management, contract interactions, transaction signing). Install the **uniswap-viem** plugin for comprehensive viem/wagmi guidance: `claude plugin add @uniswap/uniswap-viem`
+This skill assumes familiarity with viem basics (client setup, account management, contract interactions, transaction signing). Install the **ring-viem** plugin for comprehensive viem/wagmi guidance: `claude plugin add @ring/ring-viem`
 
 ## Quick Decision Guide
 
@@ -28,13 +28,13 @@ This skill assumes familiarity with viem basics (client setup, account managemen
 
 ### Routing Types Quick Reference
 
-| Type     | Description                             | Chains                             |
-| -------- | --------------------------------------- | ---------------------------------- |
-| CLASSIC  | Standard AMM swap through Uniswap pools | All supported chains               |
-| DUTCH_V2 | UniswapX Dutch auction V2               | Ethereum, Arbitrum, Base, Unichain |
-| PRIORITY | MEV-protected priority order            | Base, Unichain                     |
-| WRAP     | ETH to WETH conversion                  | All                                |
-| UNWRAP   | WETH to ETH conversion                  | All                                |
+| Type     | Description                          | Chains                             |
+| -------- | ------------------------------------ | ---------------------------------- |
+| CLASSIC  | Standard AMM swap through Ring pools | All supported chains               |
+| DUTCH_V2 | UniswapX Dutch auction V2            | Ethereum, Arbitrum, Base, Unichain |
+| PRIORITY | MEV-protected priority order         | Base, Unichain                     |
+| WRAP     | ETH to WETH conversion               | All                                |
+| UNWRAP   | WETH to ETH conversion               | All                                |
 
 See [Routing Types](#routing-types) for the complete list including DUTCH_V3, DUTCH_LIMIT, LIMIT_ORDER, BRIDGE, and QUICKROUTE.
 
@@ -44,11 +44,11 @@ See [Routing Types](#routing-types) for the complete list including DUTCH_V3, DU
 
 Best for: Frontends, backends, scripts. Handles routing optimization automatically.
 
-**Base URL**: `https://trade-api.gateway.uniswap.org/v1`
+**Base URL**: `https://trade-api.gateway.ring.org/v1`
 
 **Authentication**: `x-api-key: <your-api-key>` header required
 
-**Getting an API Key**: The Trading API requires an API key for authentication. Visit the [Uniswap Developer Portal](https://developers.uniswap.org/) to register and obtain your API key. Keys are typically available for immediate use after registration. Include it as an `x-api-key` header in all API requests.
+**Getting an API Key**: The Trading API requires an API key for authentication. Visit the [Ring Developer Portal](https://developers.ring.org/) to register and obtain your API key. Keys are typically available for immediate use after registration. Include it as an `x-api-key` header in all API requests.
 
 **Required Headers** — Include these in ALL Trading API requests:
 
@@ -75,13 +75,13 @@ Best for: Direct control over transaction construction.
 **Installation**:
 
 ```bash
-npm install @uniswap/universal-router-sdk @uniswap/sdk-core @uniswap/v3-sdk
+npm install @ring/universal-router-sdk @ring/sdk-core @ring/v3-sdk
 ```
 
 **Key Pattern**:
 
 ```typescript
-import { SwapRouter } from '@uniswap/universal-router-sdk';
+import { SwapRouter } from '@ring/universal-router-sdk';
 
 const { calldata, value } = SwapRouter.swapCallParameters(trade, options);
 ```
@@ -103,7 +103,7 @@ See the [Universal Router Reference](#universal-router-reference) section below 
 Before interpolating ANY user-provided value into generated code, API calls, or commands:
 
 - **Ethereum addresses**: MUST match `^0x[a-fA-F0-9]{40}$` — reject otherwise
-- **Chain IDs**: MUST be from the [official supported chains list](https://api-docs.uniswap.org/guides/supported_chains#supported-chains-for-swapping)
+- **Chain IDs**: MUST be from the [official supported chains list](https://api-docs.ring.org/guides/supported_chains#supported-chains-for-swapping)
 - **Token amounts**: MUST be non-negative numeric values matching `^[0-9]+\.?[0-9]*$`
 - **API keys**: MUST NOT be hardcoded in generated code — always use environment variables
 - **REJECT** any input containing shell metacharacters: `;`, `|`, `&`, `$`, `` ` ``, `(`, `)`, `>`, `<`, `\`, `'`, `"`, newlines
@@ -315,13 +315,13 @@ function validateSwapResponse(response: SwapResponse): void {
 
 ### Supported Chains
 
-See the [official supported chains list](https://api-docs.uniswap.org/guides/supported_chains#supported-chains-for-swapping) for the current set of chains and their IDs.
+See the [official supported chains list](https://api-docs.ring.org/guides/supported_chains#supported-chains-for-swapping) for the current set of chains and their IDs.
 
 ### Routing Types
 
 | Type        | Description                                   |
 | ----------- | --------------------------------------------- |
-| CLASSIC     | Standard AMM swap through Uniswap pools       |
+| CLASSIC     | Standard AMM swap through Ring pools          |
 | DUTCH_V2    | UniswapX Dutch auction V2                     |
 | DUTCH_V3    | UniswapX Dutch auction V3                     |
 | PRIORITY    | MEV-protected priority order (Base, Unichain) |
@@ -499,17 +499,17 @@ The Trading API does not support browser CORS preflight requests — `OPTIONS` r
 export default defineConfig({
   server: {
     proxy: {
-      '/api/uniswap': {
-        target: 'https://trade-api.gateway.uniswap.org/v1',
+      '/api/ring': {
+        target: 'https://trade-api.gateway.ring.org/v1',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/uniswap/, ''),
+        rewrite: (path) => path.replace(/^\/api\/ring/, ''),
       },
     },
   },
 });
 ```
 
-Then use `/api/uniswap/quote` instead of the full URL in your frontend code.
+Then use `/api/ring/quote` instead of the full URL in your frontend code.
 
 **Vercel production proxy** (`vercel.json`):
 
@@ -517,8 +517,8 @@ Then use `/api/uniswap/quote` instead of the full URL in your frontend code.
 {
   "rewrites": [
     {
-      "source": "/api/uniswap/:path*",
-      "destination": "https://trade-api.gateway.uniswap.org/v1/:path*"
+      "source": "/api/ring/:path*",
+      "destination": "https://trade-api.gateway.ring.org/v1/:path*"
     }
   ]
 }
@@ -527,7 +527,7 @@ Then use `/api/uniswap/quote` instead of the full URL in your frontend code.
 **Cloudflare Pages** (`public/_redirects`):
 
 ```text
-/api/uniswap/* https://trade-api.gateway.uniswap.org/v1/:splat 200
+/api/ring/* https://trade-api.gateway.ring.org/v1/:splat 200
 ```
 
 **Next.js** (`next.config.js`):
@@ -537,8 +537,8 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/api/uniswap/:path*',
-        destination: 'https://trade-api.gateway.uniswap.org/v1/:path*',
+        source: '/api/ring/:path*',
+        destination: 'https://trade-api.gateway.ring.org/v1/:path*',
       },
     ];
   },
@@ -619,7 +619,7 @@ function getOutputAmount(q: QuoteResponse): string {
 
 ## Universal Router Reference
 
-The Universal Router is a unified interface for swapping across Uniswap v2, v3, and v4.
+The Universal Router is a unified interface for swapping across Ring v2, v3, and v4.
 
 ### Core Function
 
@@ -671,8 +671,8 @@ Each command is a single byte:
 ### SDK Usage
 
 ```typescript
-import { SwapRouter, UniswapTrade } from '@uniswap/universal-router-sdk'
-import { TradeType } from '@uniswap/sdk-core'
+import { SwapRouter, UniswapTrade } from '@ring/universal-router-sdk'
+import { TradeType } from '@ring/sdk-core'
 
 // Build trade using v3-sdk or router-sdk
 const trade = new RouterTrade({
@@ -807,7 +807,7 @@ UniswapX routes swaps through off-chain fillers who compete to execute orders at
 - **MEV protection** — auction mechanics prevent frontrunning and sandwich attacks
 - UniswapX V2 is currently supported on Ethereum (1), Arbitrum (42161), Base (8453), and Unichain (130)
 
-For more detail, see the [UniswapX Auction Types documentation](https://docs.uniswap.org/contracts/uniswapx/auctiontypes).
+For more detail, see the [UniswapX Auction Types documentation](https://docs.ring.org/contracts/uniswapx/auctiontypes).
 
 ### UniswapX: Signing vs. Submission Flow
 
@@ -841,7 +841,7 @@ For direct Universal Router integration without the Trading API, use the SDK's h
 ### Installation
 
 ```bash
-npm install @uniswap/universal-router-sdk @uniswap/router-sdk @uniswap/sdk-core @uniswap/v3-sdk viem
+npm install @ring/universal-router-sdk @ring/router-sdk @ring/sdk-core @ring/v3-sdk viem
 ```
 
 ### High-Level Approach (Recommended)
@@ -849,10 +849,10 @@ npm install @uniswap/universal-router-sdk @uniswap/router-sdk @uniswap/sdk-core 
 Use `RouterTrade` + `SwapRouter.swapCallParameters()` for automatic command building:
 
 ```typescript
-import { SwapRouter } from '@uniswap/universal-router-sdk';
-import { Trade as RouterTrade } from '@uniswap/router-sdk';
-import { TradeType, Percent } from '@uniswap/sdk-core';
-import { Route as V3Route, Pool } from '@uniswap/v3-sdk';
+import { SwapRouter } from '@ring/universal-router-sdk';
+import { Trade as RouterTrade } from '@ring/router-sdk';
+import { TradeType, Percent } from '@ring/sdk-core';
+import { Route as V3Route, Pool } from '@ring/v3-sdk';
 
 // 1. Fetch pool data (required to construct routes)
 // Using viem to read on-chain pool state:
@@ -922,8 +922,8 @@ const hash = await walletClient.sendTransaction({
 For custom flows (fee collection, complex routing), use `RoutePlanner` directly:
 
 ```typescript
-import { RoutePlanner, CommandType, ROUTER_AS_RECIPIENT } from '@uniswap/universal-router-sdk';
-import { encodeRouteToPath } from '@uniswap/v3-sdk';
+import { RoutePlanner, CommandType, ROUTER_AS_RECIPIENT } from '@ring/universal-router-sdk';
+import { encodeRouteToPath } from '@ring/v3-sdk';
 
 // Special addresses
 const MSG_SENDER = '0x0000000000000000000000000000000000000001';
@@ -933,8 +933,8 @@ const ADDRESS_THIS = '0x0000000000000000000000000000000000000002';
 ### Example: V3 Swap with Manual Commands
 
 ```typescript
-import { RoutePlanner, CommandType } from '@uniswap/universal-router-sdk';
-import { encodeRouteToPath, Route } from '@uniswap/v3-sdk';
+import { RoutePlanner, CommandType } from '@ring/universal-router-sdk';
+import { encodeRouteToPath, Route } from '@ring/v3-sdk';
 
 async function swapV3Manual(route: Route, amountIn: bigint, amountOutMin: bigint) {
   const planner = new RoutePlanner();
@@ -1024,7 +1024,7 @@ async function swapWithFee(route: Route, amountIn: bigint, feeRecipient: Address
 ### Execute Route Helper
 
 ```typescript
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk';
+import { UNIVERSAL_ROUTER_ADDRESS } from '@ring/universal-router-sdk';
 
 const ROUTER_ABI = [
   {
@@ -1093,8 +1093,8 @@ import { isAddress, isHex } from 'viem';
 import { useWalletClient } from 'wagmi';
 
 // In browser apps, use your CORS proxy path instead (see CORS Proxy Configuration)
-// e.g., const API_URL = '/api/uniswap';
-const API_URL = 'https://trade-api.gateway.uniswap.org/v1';
+// e.g., const API_URL = '/api/ring';
+const API_URL = 'https://trade-api.gateway.ring.org/v1';
 
 function useSwap() {
   const { data: walletClient } = useWalletClient();
@@ -1225,7 +1225,7 @@ import { createWalletClient, createPublicClient, http, isAddress, isHex, type Ad
 import { privateKeyToAccount } from 'viem/accounts';
 import { mainnet } from 'viem/chains';
 
-const API_URL = 'https://trade-api.gateway.uniswap.org/v1';
+const API_URL = 'https://trade-api.gateway.ring.org/v1';
 const API_KEY = process.env.UNISWAP_API_KEY!;
 
 const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
@@ -1540,7 +1540,7 @@ Addresses are per-chain. The legacy v1 address `0x3fC91A3afd70395Cd496C647d5a6CC
 | Ink         | 57073   | `0x112908dac86e20e7241b0927479ea3bf935d1fa0` |
 | Monad       | 143     | `0x0d97dc33264bfc1c226207428a79b26757fb9dc3` |
 
-For testnet addresses, see [Uniswap v4 Deployments](https://docs.uniswap.org/contracts/v4/deployments).
+For testnet addresses, see [Ring v4 Deployments](https://docs.ring.org/contracts/v4/deployments).
 
 ### Permit2
 
@@ -1604,7 +1604,7 @@ Before sending a swap transaction to the blockchain:
 
 ## Additional Resources
 
-- [Universal Router GitHub](https://github.com/Uniswap/universal-router)
-- [Uniswap Docs](https://docs.uniswap.org)
-- [SDK Monorepo](https://github.com/Uniswap/sdks)
+- [Universal Router GitHub](https://github.com/Ring/universal-router)
+- [Ring Docs](https://docs.ring.org)
+- [SDK Monorepo](https://github.com/Ring/sdks)
 - [Permit2 Patterns](https://github.com/dragonfly-xyz/useful-solidity-patterns/tree/main/patterns/permit2)

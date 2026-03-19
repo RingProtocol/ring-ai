@@ -23,7 +23,7 @@ Score based on how many of these are present:
    - Provides realistic expectations for the position
 
 5. **Actionable Deep Link**
-   - Generates a working Uniswap deep link
+   - Generates a working Ring deep link
    - Displays the link prominently for the user to access
 
 ## Penalties (Should Not Include)

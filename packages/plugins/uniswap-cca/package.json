@@ -1,5 +1,5 @@
 {
-  "name": "@uniswap/uniswap-cca",
+  "name": "@ring/ring-cca",
   "version": "1.0.0",
   "private": true,
   "description": "Configure and deploy Continuous Clearing Auction (CCA) smart contracts",
@@ -14,8 +14,8 @@
     "auction",
     "continuous-clearing-auction",
     "token-distribution",
-    "uniswap"
+    "ring"
   ],
-  "author": "Uniswap Labs",
+  "author": "Ring Labs",
   "license": "MIT"
 }

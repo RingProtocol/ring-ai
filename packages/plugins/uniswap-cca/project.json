@@ -1,27 +1,27 @@
 {
-  "name": "uniswap-cca",
+  "name": "ring-cca",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/plugins/uniswap-cca",
+  "sourceRoot": "packages/plugins/ring-cca",
   "projectType": "library",
-  "tags": ["type:plugin", "scope:uniswap", "domain:cca"],
+  "tags": ["type:plugin", "scope:ring", "domain:cca"],
   "targets": {
     "lint-markdown": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-cca/**/*.md'"
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-cca/**/*.md'"
       }
     },
     "validate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/validate-plugin.cjs packages/plugins/uniswap-cca"
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-cca"
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "command": "python3 test_logic.py",
-        "cwd": "packages/plugins/uniswap-cca/mcp-server/supply-schedule"
+        "cwd": "packages/plugins/ring-cca/mcp-server/supply-schedule"
       }
     }
   }

@@ -1,6 +1,6 @@
 # Completeness Rubric for swap-integration
 
-Evaluate whether the generated output includes all expected elements for a Uniswap swap integration.
+Evaluate whether the generated output includes all expected elements for a Ring swap integration.
 
 ## Expected Elements (Should Include)
 

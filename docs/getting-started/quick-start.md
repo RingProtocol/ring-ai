@@ -5,11 +5,11 @@ order: 3
 
 # Quick Start
 
-Create your first Uniswap V4 hook with AI assistance in minutes.
+Create your first Ring V4 hook with AI assistance in minutes.
 
 ## Prerequisites
 
-- Claude Code with the `uniswap-hooks` plugin installed
+- Claude Code with the `ring-hooks` plugin installed
 - A Foundry project for Solidity development
 
 ## Step 1: Describe Your Hook
@@ -145,4 +145,4 @@ Claude: I'll review the implementation for gas optimizations...
 
 - Explore [more skills](/skills/)
 - Learn about [evaluations](/evals/)
-- Read the [v4 Hooks Guide](https://docs.uniswap.org/contracts/v4/concepts/hooks)
+- Read the [v4 Hooks Guide](https://docs.ring.org/contracts/v4/concepts/hooks)

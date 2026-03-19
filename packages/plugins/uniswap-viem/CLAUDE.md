@@ -1,4 +1,4 @@
-# CLAUDE.md - uniswap-viem Plugin
+# CLAUDE.md - ring-viem Plugin
 
 ## Overview
 
@@ -17,7 +17,7 @@ This plugin provides foundational EVM blockchain integration skills using viem a
 ## File Structure
 
 ```text
-uniswap-viem/
+ring-viem/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── agents/
@@ -57,8 +57,8 @@ All EVM-compatible chains including: Ethereum, Arbitrum, Optimism, Base, Polygon
 
 ## Related Plugins
 
-- **uniswap-trading**: Uniswap swap integration via Trading API, Universal Router, and SDKs (builds on viem basics)
-- **uniswap-hooks**: Uniswap V4 hook development with security-first approach
+- **ring-trading**: Ring swap integration via Trading API, Universal Router, and SDKs (builds on viem basics)
+- **ring-hooks**: Ring V4 hook development with security-first approach
 
 ## Key References
 

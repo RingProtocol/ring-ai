@@ -18,6 +18,6 @@ I got a 402 from an AI API. The challenge body is:
 ```
 
 My wallet address is `0xcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc3`.
-My Uniswap API key is in `UNISWAP_API_KEY`.
+My Ring API key is in `UNISWAP_API_KEY`.
 
 Walk me through paying this.

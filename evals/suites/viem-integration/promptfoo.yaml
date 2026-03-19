@@ -17,7 +17,7 @@ defaultTest:
   options:
     timeout: 120000 # 2 minutes per case
   vars:
-    skill_content: file://../../../packages/plugins/uniswap-viem/skills/viem-integration/SKILL.md
+    skill_content: file://../../../packages/plugins/ring-viem/skills/viem-integration/SKILL.md
 
 # Test cases with specific assertions
 tests:

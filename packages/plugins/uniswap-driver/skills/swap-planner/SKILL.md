@@ -1,17 +1,17 @@
 ---
 name: swap-planner
-description: This skill should be used when the user asks to "swap tokens", "trade ETH for USDC", "exchange tokens on Uniswap", "buy tokens", "sell tokens", "convert ETH to stablecoins", "find memecoins", "discover tokens", "research tokens", "tokens to buy", "find tokens to swap", "what should I buy", or mentions swapping, trading, researching, discovering, buying, or exchanging tokens on any Uniswap-supported chain. Supports both known token swaps and token discovery workflows (discovery uses keyword search and web search — there is no live "trending" feed). Generates deep links to execute swaps in the Uniswap interface.
+description: This skill should be used when the user asks to "swap tokens", "trade ETH for USDC", "exchange tokens on Ring", "buy tokens", "sell tokens", "convert ETH to stablecoins", "find memecoins", "discover tokens", "research tokens", "tokens to buy", "find tokens to swap", "what should I buy", or mentions swapping, trading, researching, discovering, buying, or exchanging tokens on any Ring-supported chain. Supports both known token swaps and token discovery workflows (discovery uses keyword search and web search — there is no live "trending" feed). Generates deep links to execute swaps in the Ring interface.
 allowed-tools: Read, Glob, Grep, Bash(curl:*), Bash(jq:*), Bash(cast:*), Bash(xdg-open:*), Bash(open:*), WebFetch, WebSearch, Task(subagent_type:Explore), AskUserQuestion
 model: sonnet
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '0.2.1'
 ---
 
 # Swap Planning
 
-Plan and generate deep links for token swaps on Uniswap across all supported chains.
+Plan and generate deep links for token swaps on Ring across all supported chains.
 
 > **Runtime Compatibility:** This skill uses `AskUserQuestion` for interactive prompts. If `AskUserQuestion` is not available in your runtime, collect the same parameters through natural language conversation instead.
 
@@ -22,9 +22,9 @@ Plan token swaps by:
 1. Gathering swap intent (tokens, amounts, chain)
 2. Verifying token contracts on-chain
 3. Researching tokens via web search when needed
-4. Generating a deep link that opens in the Uniswap interface with parameters pre-filled
+4. Generating a deep link that opens in the Ring interface with parameters pre-filled
 
-The generated link opens Uniswap with all parameters ready for execution.
+The generated link opens Ring with all parameters ready for execution.
 
 > **Note:** Browser opening (`xdg-open`/`open`) may fail in SSH, containerized, or headless environments. Always display the URL prominently so users can copy and access it manually if needed.
 
@@ -43,7 +43,7 @@ DexScreener search works best with specific terms:
 ```bash
 # Search for tokens by name/category (e.g., "degen", "pepe", "ai agent")
 curl -s "https://api.dexscreener.com/latest/dex/search?q=degen" | \
-  jq '[.pairs[] | select(.chainId == "base" and .dexId == "uniswap")] |
+  jq '[.pairs[] | select(.chainId == "base" and .dexId == "ring")] |
     sort_by(-.volume.h24) | .[0:5] | map({
       token: .baseToken.symbol,
       address: .baseToken.address,
@@ -75,7 +75,7 @@ For broad discovery ("what's trending"), use web search to find tokens, then ver
 ```bash
 # After finding a token address from web search, verify it exists
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
-  jq '[.[] | select(.dexId == "uniswap")][0] | {
+  jq '[.[] | select(.dexId == "ring")][0] | {
     name: .baseToken.name,
     symbol: .baseToken.symbol,
     price: .priceUsd,
@@ -86,7 +86,7 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
 
 **Network IDs:** See `references/chains.md` for the full list with DexScreener and DefiLlama provider IDs. Common IDs: `ethereum`, `base`, `arbitrum`, `optimism`, `polygon`, `bsc`, `avalanche`, `unichain`.
 
-**DexScreener coverage varies by chain.** Ethereum, Base, and Arbitrum have deep Uniswap data. Celo, Blast, Zora, and World Chain have limited Uniswap pool coverage — fewer results and potentially missing pairs. Fall back to DefiLlama for price data when DexScreener returns empty results (see `references/data-providers.md`).
+**DexScreener coverage varies by chain.** Ethereum, Base, and Arbitrum have deep Ring data. Celo, Blast, Zora, and World Chain have limited Ring pool coverage — fewer results and potentially missing pairs. Fall back to DefiLlama for price data when DexScreener returns empty results (see `references/data-providers.md`).
 
 **Note:** DexScreener's public API doesn't have a "trending" or "top gainers" endpoint. Token discovery uses keyword search (`/latest/dex/search`) and web search as a fallback. For general discovery, ask the user what type of token they're looking for and search by keyword.
 
@@ -290,7 +290,7 @@ For unfamiliar tokens, use web search to research:
 
 - Token legitimacy and project info
 - Recent news or security concerns
-- Liquidity availability on Uniswap
+- Liquidity availability on Ring
 
 Include relevant findings in the summary.
 
@@ -303,7 +303,7 @@ Before generating the deep link, fetch current prices to estimate swap output. S
 ```bash
 # Get token price and pool liquidity
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
-  jq '[.[] | select(.dexId == "uniswap")][0] | {
+  jq '[.[] | select(.dexId == "ring")][0] | {
     price: .priceUsd,
     liquidity: .liquidity.usd,
     volume24h: .volume.h24
@@ -324,10 +324,10 @@ If API is unavailable, fall back to DefiLlama or web search for price estimates.
 
 ### Step 6: Generate Deep Link
 
-Construct the Uniswap swap URL:
+Construct the Ring swap URL:
 
 ```text
-https://app.uniswap.org/swap?chain={chain}&inputCurrency={input}&outputCurrency={output}&value={amount}&field=INPUT
+https://app.ring.org/swap?chain={chain}&inputCurrency={input}&outputCurrency={output}&value={amount}&field=INPUT
 ```
 
 **URL Parameters:**
@@ -366,28 +366,28 @@ Format the response with:
 ### Notes
 
 - Final amount depends on current market price
-- Default slippage is 0.5% - adjust in Uniswap if needed
-- Review all details in Uniswap before confirming
+- Default slippage is 0.5% - adjust in Ring if needed
+- Review all details in Ring before confirming
 
-Opening Uniswap in your browser...
+Opening Ring in your browser...
 ```
 
 **After displaying the summary, open the URL in the browser:**
 
 ```bash
 # Linux
-xdg-open "https://app.uniswap.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&value=1&field=INPUT"
+xdg-open "https://app.ring.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&value=1&field=INPUT"
 
 # macOS
-open "https://app.uniswap.org/swap?..."
+open "https://app.ring.org/swap?..."
 ```
 
 **Environment limitations:** Browser opening may fail in remote SSH, containerized, or headless environments. If `xdg-open`/`open` fails, display the full URL prominently so users can copy and paste it manually:
 
 ```markdown
-**[Click here to open in Uniswap](https://app.uniswap.org/swap?...)**
+**[Click here to open in Ring](https://app.ring.org/swap?...)**
 
-Or copy this URL: `https://app.uniswap.org/swap?...`
+Or copy this URL: `https://app.ring.org/swap?...`
 ```
 
 Always present the summary and URL so users can review and execute.
@@ -396,7 +396,7 @@ Always present the summary and URL so users can review and execute.
 
 ### Slippage
 
-The deep link uses Uniswap's default slippage (0.5%). For volatile tokens or large trades, advise users to adjust slippage in the interface.
+The deep link uses Ring's default slippage (0.5%). For volatile tokens or large trades, advise users to adjust slippage in the interface.
 
 ### Gas Estimation
 
@@ -412,7 +412,7 @@ For large trades, warn users about potential price impact. Suggest splitting int
 
 ## Supported Chains
 
-All chains supported by the Uniswap interface:
+All chains supported by the Ring interface:
 
 - Ethereum Mainnet (`ethereum`)
 - Base (`base`)

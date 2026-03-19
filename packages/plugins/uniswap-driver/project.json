@@ -1,20 +1,20 @@
 {
-  "name": "uniswap-driver",
+  "name": "ring-driver",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/plugins/uniswap-driver",
+  "sourceRoot": "packages/plugins/ring-driver",
   "projectType": "library",
-  "tags": ["type:plugin", "scope:uniswap"],
+  "tags": ["type:plugin", "scope:ring"],
   "targets": {
     "lint-markdown": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-driver/**/*.md'"
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-driver/**/*.md'"
       }
     },
     "validate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/validate-plugin.cjs packages/plugins/uniswap-driver"
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-driver"
       }
     }
   }

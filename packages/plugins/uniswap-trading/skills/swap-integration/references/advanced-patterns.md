@@ -54,7 +54,7 @@ async function getSwapCalldata(
 ): Promise<SwapCalldata> {
   const { permitData, permitTransaction, ...cleanQuote } = quoteResponse;
 
-  const swapRes = await fetch('https://trade-api.gateway.uniswap.org/v1/swap', {
+  const swapRes = await fetch('https://trade-api.gateway.ring.org/v1/swap', {
     method: 'POST',
     headers: { 'x-api-key': apiKey, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -317,7 +317,7 @@ async function batchQuotes(
   const results: QuoteResponse[] = [];
 
   for (const param of params) {
-    const response = await fetchWithRetry('https://trade-api.gateway.uniswap.org/v1/quote', {
+    const response = await fetchWithRetry('https://trade-api.gateway.ring.org/v1/quote', {
       method: 'POST',
       headers: { 'x-api-key': apiKey, 'Content-Type': 'application/json' },
       body: JSON.stringify(param),

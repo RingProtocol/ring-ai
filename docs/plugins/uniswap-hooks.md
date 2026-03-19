@@ -1,16 +1,16 @@
 ---
-title: Uniswap Hooks
+title: Ring Hooks
 order: 3
 ---
 
-# Uniswap Hooks
+# Ring Hooks
 
-AI-powered, security-first assistance for creating Uniswap v4 hooks.
+AI-powered, security-first assistance for creating Ring v4 hooks.
 
 ## Installation
 
 ```bash
-/plugin install uniswap-hooks
+/plugin install ring-hooks
 ```
 
 ## Skills
@@ -63,5 +63,5 @@ function getHookPermissions() public pure override returns (Hooks.Permissions me
 
 - [Plugins Overview](/plugins/) - All available plugins
 - [Skills](/skills/) - All available skills
-- [Uniswap v4 Core](https://github.com/Uniswap/v4-core)
-- [v4 Periphery](https://github.com/Uniswap/v4-periphery)
+- [Ring v4 Core](https://github.com/Ring/v4-core)
+- [v4 Periphery](https://github.com/Ring/v4-periphery)

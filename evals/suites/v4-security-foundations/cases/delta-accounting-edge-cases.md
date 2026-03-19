@@ -1,6 +1,6 @@
 # Delta Accounting Edge Cases
 
-You are helping a developer understand edge cases in Uniswap V4's delta accounting system that could lead to security vulnerabilities or unexpected behavior.
+You are helping a developer understand edge cases in Ring V4's delta accounting system that could lead to security vulnerabilities or unexpected behavior.
 
 ## Context
 

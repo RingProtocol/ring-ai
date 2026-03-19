@@ -5,7 +5,7 @@ order: 2
 
 # Creating Plugins
 
-This guide walks through creating a new plugin for Uniswap AI.
+This guide walks through creating a new plugin for Ring AI.
 
 ## Prerequisites
 
@@ -45,14 +45,14 @@ Create `package.json`:
 
 ```json
 {
-  "name": "@uniswap/my-plugin",
+  "name": "@ring/my-plugin",
   "version": "0.1.0",
   "private": true,
-  "description": "My Uniswap AI plugin",
+  "description": "My Ring AI plugin",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Uniswap/uniswap-ai.git",
+    "url": "https://github.com/Ring/ring-ai.git",
     "directory": "packages/plugins/my-plugin"
   }
 }
@@ -79,7 +79,7 @@ name: my-skill
 description: Brief description of the skill
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
 ---
 
 # My Skill

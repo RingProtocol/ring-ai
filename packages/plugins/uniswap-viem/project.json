@@ -1,20 +1,20 @@
 {
-  "name": "uniswap-viem",
+  "name": "ring-viem",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/plugins/uniswap-viem",
+  "sourceRoot": "packages/plugins/ring-viem",
   "projectType": "library",
-  "tags": ["type:plugin", "scope:uniswap"],
+  "tags": ["type:plugin", "scope:ring"],
   "targets": {
     "lint-markdown": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-viem/**/*.md'"
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-viem/**/*.md'"
       }
     },
     "validate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/validate-plugin.cjs packages/plugins/uniswap-viem"
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-viem"
       }
     }
   }

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # PreToolUse hook: validates open/xdg-open commands
-# Only allows app.uniswap.org URLs to be opened automatically.
+# Only allows app.ring.org URLs to be opened automatically.
 #
 # Security finding addressed:
-#   M-1: Restricts Bash(open:*) and Bash(xdg-open:*) to app.uniswap.org
+#   M-1: Restricts Bash(open:*) and Bash(xdg-open:*) to app.ring.org
 #        domain only, preventing arbitrary URL opening.
 #
 # Bypass mitigations:
@@ -40,10 +40,10 @@ if [ -z "$URL" ]; then
   exit 0
 fi
 
-# Allow app.uniswap.org
-if echo "$URL" | grep -qE '^https://app\.uniswap\.org(/|$|\?)'; then
+# Allow app.ring.org
+if echo "$URL" | grep -qE '^https://app\.ring\.exchange(/|$|\?)'; then
   exit 0
 fi
 
-echo "{\"decision\":\"block\",\"reason\":\"BLOCKED: URL is not on the app.uniswap.org domain. Only https://app.uniswap.org/* URLs can be opened automatically.\"}"
+echo "{\"decision\":\"block\",\"reason\":\"BLOCKED: URL is not on the app.ring.exchange domain. Only https://app.ring.exchange/* URLs can be opened automatically.\"}"
 exit 0

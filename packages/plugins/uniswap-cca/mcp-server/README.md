@@ -1,6 +1,6 @@
-# Uniswap CCA MCP Servers
+# Ring CCA MCP Servers
 
-This directory contains MCP (Model Context Protocol) servers for the uniswap-cca plugin.
+This directory contains MCP (Model Context Protocol) servers for the ring-cca plugin.
 
 ## Structure
 

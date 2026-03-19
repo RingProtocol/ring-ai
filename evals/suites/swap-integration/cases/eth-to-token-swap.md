@@ -6,7 +6,7 @@ Build a swap integration that handles native ETH as the input token, including t
 
 - TypeScript/Node.js backend script
 - Need to swap native ETH to USDC on Ethereum mainnet
-- Using the Uniswap Trading API
+- Using the Ring Trading API
 - Have a private key for signing
 
 ## Requirements
@@ -21,7 +21,7 @@ Build a swap integration that handles native ETH as the input token, including t
 
 ## Constraints
 
-- Must use the Uniswap Trading API (<https://trade-api.gateway.uniswap.org/v1>)
+- Must use the Ring Trading API (<https://trade-api.gateway.ring.org/v1>)
 - Must correctly distinguish native ETH from ERC-20 token flows
 - Must handle the value field in the swap response (ETH swaps require msg.value)
 - Must not call /check_approval for native ETH inputs

@@ -1,6 +1,6 @@
 # Supported Chains Reference
 
-Comprehensive reference for all Uniswap-supported chains including RPC URLs, chain IDs, and common token addresses.
+Comprehensive reference for all Ring-supported chains including RPC URLs, chain IDs, and common token addresses.
 
 ## Chain Configuration
 
@@ -265,8 +265,8 @@ Use the correct chain identifier for each data provider API:
 | Polygon   | `polygon`      | `polygon`    |                                               |
 | BNB Chain | `bsc`          | `bsc`        | Not `bnb` — both providers use `bsc`          |
 | Avalanche | `avalanche`    | `avax`       | IDs differ — DexScreener and DefiLlama differ |
-| Celo      | `celo`         | `celo`       | Limited DexScreener Uniswap data              |
-| Blast     | `blast`        | `blast`      | Limited DexScreener Uniswap data              |
+| Celo      | `celo`         | `celo`       | Limited DexScreener Ring data                 |
+| Blast     | `blast`        | `blast`      | Limited DexScreener Ring data                 |
 | Zora      | `zora`         | n/a          | Not on DefiLlama; DexScreener data limited    |
 | World     | `worldchain`   | n/a          | Not on DefiLlama; DexScreener data limited    |
 | Unichain  | `unichain`     | `unichain`   | Newer chain — pool data still growing         |
@@ -274,8 +274,8 @@ Use the correct chain identifier for each data provider API:
 **Key discrepancies:**
 
 - **Avalanche**: DexScreener uses `avalanche`, DefiLlama uses `avax`
-- **BNB Chain**: Both providers use `bsc`, not `bnb` (the URL parameter for Uniswap deep links is `bnb`)
-- **Zora/World Chain**: Not indexed by DefiLlama — DexScreener only, with limited Uniswap pool data
+- **BNB Chain**: Both providers use `bsc`, not `bnb` (the URL parameter for Ring deep links is `bnb`)
+- **Zora/World Chain**: Not indexed by DefiLlama — DexScreener only, with limited Ring pool data
 
 ## Token Address Lookup
 
@@ -283,7 +283,7 @@ When a user provides a token symbol, first check the common tokens list above. I
 
 1. Use web search: `"{symbol} token contract address {chain}"`
 2. Verify the address on the chain's block explorer
-3. Check if the token has liquidity on Uniswap
+3. Check if the token has liquidity on Ring
 
 ## Native Token Handling
 

@@ -6,7 +6,7 @@ Build a secure swap integration that avoids all common Trading API pitfalls and 
 
 - TypeScript/Node.js backend script handling real user funds
 - Production environment where security is critical
-- Using the Uniswap Trading API
+- Using the Ring Trading API
 - Must handle both Permit2 and non-Permit2 swap flows
 
 ## Requirements
@@ -46,4 +46,4 @@ Build a secure swap integration that avoids all common Trading API pitfalls and 
 
 ## Expected Output
 
-A production-quality TypeScript implementation with explicit prepareSwapRequest and validateSwapResponse helper functions that demonstrate all critical security patterns for the Uniswap Trading API.
+A production-quality TypeScript implementation with explicit prepareSwapRequest and validateSwapResponse helper functions that demonstrate all critical security patterns for the Ring Trading API.

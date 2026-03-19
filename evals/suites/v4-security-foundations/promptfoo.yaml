@@ -17,9 +17,9 @@ defaultTest:
   options:
     timeout: 120000 # 2 minutes per case
   vars:
-    skill_content: file://../../../packages/plugins/uniswap-hooks/skills/v4-security-foundations/SKILL.md
-    vulnerabilities_catalog: file://../../../packages/plugins/uniswap-hooks/skills/v4-security-foundations/references/vulnerabilities-catalog.md
-    audit_checklist: file://../../../packages/plugins/uniswap-hooks/skills/v4-security-foundations/references/audit-checklist.md
+    skill_content: file://../../../packages/plugins/ring-hooks/skills/v4-security-foundations/SKILL.md
+    vulnerabilities_catalog: file://../../../packages/plugins/ring-hooks/skills/v4-security-foundations/references/vulnerabilities-catalog.md
+    audit_checklist: file://../../../packages/plugins/ring-hooks/skills/v4-security-foundations/references/audit-checklist.md
 
 # Test cases with specific assertions
 tests:

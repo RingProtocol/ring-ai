@@ -1,6 +1,6 @@
 # NoOp Rug Pull Attack Understanding Rubric
 
-Evaluate whether the response correctly explains the NoOp rug pull attack vector in Uniswap V4 hooks.
+Evaluate whether the response correctly explains the NoOp rug pull attack vector in Ring V4 hooks.
 
 ## Required Elements (Must Include)
 

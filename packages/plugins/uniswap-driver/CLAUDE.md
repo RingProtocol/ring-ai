@@ -1,8 +1,8 @@
-# CLAUDE.md - uniswap-driver Plugin
+# CLAUDE.md - ring-driver Plugin
 
 ## Overview
 
-This plugin provides AI-powered assistance for planning Uniswap swaps and liquidity positions. It generates deep links that open directly in the Uniswap web interface with pre-filled parameters.
+This plugin provides AI-powered assistance for planning Ring swaps and liquidity positions. It generates deep links that open directly in the Ring web interface with pre-filled parameters.
 
 ## Plugin Components
 
@@ -15,7 +15,7 @@ This plugin provides AI-powered assistance for planning Uniswap swaps and liquid
 
 ### Swap Deep Links
 
-Base URL: `https://app.uniswap.org/swap`
+Base URL: `https://app.ring.org/swap`
 
 | Parameter        | Description                      | Example                        |
 | ---------------- | -------------------------------- | ------------------------------ |
@@ -25,11 +25,11 @@ Base URL: `https://app.uniswap.org/swap`
 | `value`          | Amount to swap                   | `1.5`                          |
 | `field`          | Which field the value applies to | `INPUT` or `OUTPUT`            |
 
-**Example**: `https://app.uniswap.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&value=1&field=INPUT`
+**Example**: `https://app.ring.org/swap?chain=base&inputCurrency=NATIVE&outputCurrency=0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913&value=1&field=INPUT`
 
 ### Liquidity Deep Links
 
-Base URL: `https://app.uniswap.org/positions/create`
+Base URL: `https://app.ring.org/positions/create`
 
 | Parameter         | Description                | Example                                                 |
 | ----------------- | -------------------------- | ------------------------------------------------------- |
@@ -44,7 +44,7 @@ Base URL: `https://app.uniswap.org/positions/create`
 
 **URL Encoding**: Only encode quotes (`"` → `%22`). Do NOT encode `{}`, `:`, or `,`.
 
-> **Why?** The Uniswap interface expects JSON-like parameter structure in the URL. Full URL encoding of braces and colons breaks parsing. Only quotes need encoding to avoid URL syntax conflicts.
+> **Why?** The Ring interface expects JSON-like parameter structure in the URL. Full URL encoding of braces and colons breaks parsing. Only quotes need encoding to avoid URL syntax conflicts.
 
 ### Chain Names for URLs
 
@@ -90,15 +90,15 @@ Example output:
 - **To**: ~3,200 USDC (estimated)
 - **Slippage**: Default (0.5%)
 
-[Open in Uniswap](https://app.uniswap.org/swap?...)
+[Open in Ring](https://app.ring.org/swap?...)
 
-**Note**: Final amount depends on current market price. Review details in Uniswap before confirming.
+**Note**: Final amount depends on current market price. Review details in Ring before confirming.
 ```
 
 ## File Structure
 
 ```text
-uniswap-driver/
+ring-driver/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── references/
@@ -122,6 +122,6 @@ uniswap-driver/
 
 ## Related Resources
 
-- [Uniswap Interface](https://app.uniswap.org)
-- [Uniswap Docs](https://docs.uniswap.org)
+- [Ring Interface](https://app.ring.org)
+- [Ring Docs](https://docs.ring.org)
 - [viem Documentation](https://viem.sh)

@@ -1,11 +1,11 @@
-# Uniswap Viem Plugin
+# Ring Viem Plugin
 
 EVM blockchain integration using viem and wagmi.
 
 ## Installation
 
 ```bash
-claude plugin add @uniswap/uniswap-viem
+claude plugin add @ring/ring-viem
 ```
 
 ## Skills
@@ -54,8 +54,8 @@ The `viem-integration` skill activates when you mention blockchain development w
 
 ## Related Plugins
 
-- **uniswap-trading** - Uniswap swap integration (builds on viem basics)
-- **uniswap-hooks** - Uniswap V4 hook development
+- **ring-trading** - Ring swap integration (builds on viem basics)
+- **ring-hooks** - Ring V4 hook development
 
 ## License
 

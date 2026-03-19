@@ -1,31 +1,28 @@
-# uniswap-ai
+# ring-ai
 
-Uniswap-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the Uniswap ecosystem.
+Ring-specific AI tools (skills, plugins, agents) for developers and AI agents integrating the Ring ecosystem.
 
 ## Quick Start
 
 ```bash
 # Skills CLI (any agent)
-npx skills add Uniswap/uniswap-ai
+npx skills add ringprotocol/ring-ai
 
 # Claude Code Marketplace
-/plugin marketplace add uniswap/uniswap-ai
+/plugin marketplace add ringprotocol/ring-ai
 
 # Install individual plugins
-/plugin install uniswap-hooks      # v4 hook development
-/plugin install uniswap-trading    # Swap integration
-/plugin install uniswap-cca        # CCA auctions
-/plugin install uniswap-driver     # Swap & liquidity planning
-/plugin install uniswap-viem       # EVM integration (viem/wagmi)
+/plugin install ring-trading       # Swap integration
+/plugin install ring-driver        # Swap & liquidity planning
+/plugin install ring-to-wallet     # Install dapp to wallet
 ```
 
 ## Featured Skills
 
-| Skill                | Plugin          | Description                                                        |
-| -------------------- | --------------- | ------------------------------------------------------------------ |
-| `swap-integration`   | uniswap-trading | Integrate Uniswap swaps via Trading API, Universal Router, or SDKs |
-| `pay-with-any-token` | uniswap-trading | Pay HTTP 402 challenges (MPP/x402) using tokens via Uniswap swaps  |
-| `uniswap-v4-hooks`   | uniswap-hooks   | Secure Uniswap v4 hook development assistant                       |
+| Skill                | Plugin       | Description                                                     |
+| -------------------- | ------------ | --------------------------------------------------------------- |
+| `swap-integration`   | ring-trading | Integrate Ring swaps via Trading API, Universal Router, or SDKs |
+| `pay-with-any-token` | ring-trading | Pay HTTP 402 challenges (MPP/x402) using tokens via Ring swaps  |
 
 ## Documentation
 

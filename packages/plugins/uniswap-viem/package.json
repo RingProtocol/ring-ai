@@ -1,14 +1,14 @@
 {
-  "name": "@uniswap/uniswap-viem",
+  "name": "@ring/ring-viem",
   "version": "0.0.1",
   "private": true,
   "description": "EVM blockchain integration using viem and wagmi - client setup, reading/writing data, accounts, contract interactions, and React hooks",
-  "author": "Uniswap Labs <ai-services@uniswap.org>",
+  "author": "Ring Labs <ai-services@ring.org>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uniswap/uniswap-ai.git",
-    "directory": "packages/plugins/uniswap-viem"
+    "url": "https://github.com/ringprotocol/ring-ai.git",
+    "directory": "packages/plugins/ring-viem"
   },
   "keywords": [
     "claude-code",

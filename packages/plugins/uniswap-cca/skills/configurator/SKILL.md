@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash(curl:*), WebFetch, AskUserQue
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '1.0.0'
 ---
 
@@ -171,7 +171,7 @@ Collect parameters in these batches:
 
 ```bash
 # Navigate to MCP server directory
-cd packages/plugins/uniswap-cca/mcp-server/supply-schedule
+cd packages/plugins/ring-cca/mcp-server/supply-schedule
 
 # Run setup script (first time only)
 chmod +x setup.sh
@@ -817,10 +817,10 @@ Before generating configuration, ensure:
 
 ## Additional Resources
 
-- **CCA Repository**: <https://github.com/Uniswap/continuous-clearing-auction>
+- **CCA Repository**: <https://github.com/Ring/continuous-clearing-auction>
 - **Technical Documentation**: See `docs/TechnicalDocumentation.md` in repo
 - **Deployment Guide**: See `docs/DeploymentGuide.md` in repo
 - **Whitepaper**: See `docs/assets/whitepaper.pdf` in repo
 - **Audits**: See `docs/audits/README.md` in repo
-- **Uniswap Docs**: <https://docs.uniswap.org/contracts/liquidity-launchpad/CCA>
+- **Ring Docs**: <https://docs.ring.org/contracts/liquidity-launchpad/CCA>
 - **Bug Bounty**: <https://cantina.xyz/code/f9df94db-c7b1-434b-bb06-d1360abdd1be/overview>

@@ -75,7 +75,7 @@ The skill produces a JSON configuration keyed by chain ID:
 
 ## Related Resources
 
-- [CCA Plugin](/plugins/uniswap-cca) - Parent plugin
+- [CCA Plugin](/plugins/ring-cca) - Parent plugin
 - [CCA Deployer](/skills/deployer) - Deploy a configured auction
-- [CCA Repository](https://github.com/Uniswap/continuous-clearing-auction) - Source code
-- [Uniswap CCA Docs](https://docs.uniswap.org/contracts/liquidity-launchpad/CCA) - Official documentation
+- [CCA Repository](https://github.com/Ring/continuous-clearing-auction) - Source code
+- [Ring CCA Docs](https://docs.ring.org/contracts/liquidity-launchpad/CCA) - Official documentation

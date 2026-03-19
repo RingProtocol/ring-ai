@@ -1,20 +1,20 @@
 {
-  "name": "uniswap-trading",
+  "name": "ring-trading",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/plugins/uniswap-trading",
+  "sourceRoot": "packages/plugins/ring-trading",
   "projectType": "library",
-  "tags": ["type:plugin", "scope:uniswap"],
+  "tags": ["type:plugin", "scope:ring"],
   "targets": {
     "lint-markdown": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/uniswap-trading/**/*.md'"
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-trading/**/*.md'"
       }
     },
     "validate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "node scripts/validate-plugin.cjs packages/plugins/uniswap-trading"
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-trading"
       }
     }
   }

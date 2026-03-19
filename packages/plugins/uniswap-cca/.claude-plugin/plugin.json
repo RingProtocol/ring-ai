@@ -1,5 +1,5 @@
 {
-  "name": "uniswap-cca",
+  "name": "ring-cca",
   "version": "1.2.4",
   "description": "Configure and deploy Continuous Clearing Auction (CCA) smart contracts for token distribution",
   "skills": ["./skills/configurator", "./skills/deployer"],
@@ -9,7 +9,7 @@
     "auction",
     "continuous-clearing-auction",
     "token-distribution",
-    "uniswap",
+    "ring",
     "deployment",
     "configuration"
   ]

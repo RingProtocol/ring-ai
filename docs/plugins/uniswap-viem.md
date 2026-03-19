@@ -1,16 +1,16 @@
 ---
-title: Uniswap Viem
+title: Ring Viem
 order: 6
 ---
 
-# Uniswap Viem
+# Ring Viem
 
 EVM blockchain integration using viem and wagmi.
 
 ## Installation
 
 ```bash
-/plugin install uniswap-viem
+/plugin install ring-viem
 ```
 
 ## Skills
@@ -49,6 +49,6 @@ All EVM-compatible chains including Ethereum, Arbitrum, Optimism, Base, Polygon,
 ## Related
 
 - [Plugins Overview](/plugins/) - All available plugins
-- [Uniswap Trading](/plugins/uniswap-trading) - Swap integration (builds on viem basics)
-- [Uniswap Hooks](/plugins/uniswap-hooks) - v4 hook development
+- [Ring Trading](/plugins/ring-trading) - Swap integration (builds on viem basics)
+- [Ring Hooks](/plugins/ring-hooks) - v4 hook development
 - [Skills](/skills/) - All available skills

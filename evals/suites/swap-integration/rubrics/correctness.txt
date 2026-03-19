@@ -1,13 +1,13 @@
 # Correctness Rubric for swap-integration
 
-Evaluate whether the generated output correctly implements Uniswap swap integration.
+Evaluate whether the generated output correctly implements Ring swap integration.
 
 ## Required Elements (Must Include)
 
 Score based on how many of these are correctly implemented:
 
 1. **Trading API Flow**
-   - Uses correct base URL (https://trade-api.gateway.uniswap.org/v1)
+   - Uses correct base URL (https://trade-api.gateway.ring.org/v1)
    - Implements 3-step flow: check_approval -> quote -> swap
    - Includes x-api-key header
 

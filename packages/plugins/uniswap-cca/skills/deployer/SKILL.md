@@ -5,7 +5,7 @@ allowed-tools: Read, Glob, Grep, Bash(forge:*), Bash(cast:*), Bash(curl:*), AskU
 model: opus
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
   version: '1.0.0'
 ---
 
@@ -166,7 +166,7 @@ CCA instances are deployed via the `ContinuousClearingAuctionFactory` contract, 
 If you don't already have the CCA contracts locally, clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/Uniswap/continuous-clearing-auction.git
+git clone https://github.com/Ring/continuous-clearing-auction.git
 cd continuous-clearing-auction
 forge install
 ```
@@ -507,10 +507,10 @@ Before deployment:
 
 ## Additional Resources
 
-- **CCA Repository**: <https://github.com/Uniswap/continuous-clearing-auction>
+- **CCA Repository**: <https://github.com/Ring/continuous-clearing-auction>
 - **Technical Documentation**: See `docs/TechnicalDocumentation.md` in repo
 - **Deployment Guide**: See `docs/DeploymentGuide.md` in repo
 - **Whitepaper**: See `docs/assets/whitepaper.pdf` in repo
 - **Audits**: See `docs/audits/README.md` in repo
-- **Uniswap Docs**: <https://docs.uniswap.org/contracts/liquidity-launchpad/CCA>
+- **Ring Docs**: <https://docs.ring.org/contracts/liquidity-launchpad/CCA>
 - **Bug Bounty**: <https://cantina.xyz/code/f9df94db-c7b1-434b-bb06-d1360abdd1be/overview>

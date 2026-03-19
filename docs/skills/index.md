@@ -5,37 +5,24 @@ order: 1
 
 # Skills
 
-Skills are AI-powered capabilities that help you build on Uniswap. Each skill is designed for a specific task and can be invoked directly or contextually.
+Skills are AI-powered capabilities that help you build on Ring. Each skill is designed for a specific task and can be invoked directly or contextually.
 
 ## Available Skills
 
-### uniswap-hooks Plugin
+### ring-wallet Plugin
 
-| Skill                                                | Description                                  | Invocation                 |
-| ---------------------------------------------------- | -------------------------------------------- | -------------------------- |
-| [V4 Security Foundations](./v4-security-foundations) | Security-first guide for v4 hook development | `/v4-security-foundations` |
+| Skill                                       | Description                                                      | Invocation            |
+| ------------------------------------------- | ---------------------------------------------------------------- | --------------------- |
+| [DApp to Ring Wallet](./dapp-to-ringwallet) | Integrate DApps into Ring Wallet with SDK, CSP, and iframe fixes | `/dapp-to-ringwallet` |
 
-### uniswap-cca Plugin
+### ring-trading Plugin
 
-| Skill                          | Description                                     | Invocation      |
-| ------------------------------ | ----------------------------------------------- | --------------- |
-| [Configurator](./configurator) | Interactive CCA auction parameter configuration | `/configurator` |
-| [Deployer](./deployer)         | CCA contract deployment via Factory pattern     | `/deployer`     |
+| Skill                                   | Description                                                                | Invocation            |
+| --------------------------------------- | -------------------------------------------------------------------------- | --------------------- |
+| [Swap Integration](./swap-integration)  | Integrate Ring swaps via Trading API, Universal Router, or smart contracts | `/swap-integration`   |
+| [Pay With Tokens](./pay-with-any-token) | Fulfill HTTP 402 payment challenges using tokens via the Ring Trading API  | `/pay-with-any-token` |
 
-### uniswap-trading Plugin
-
-| Skill                                   | Description                                                                   | Invocation            |
-| --------------------------------------- | ----------------------------------------------------------------------------- | --------------------- |
-| [Swap Integration](./swap-integration)  | Integrate Uniswap swaps via Trading API, Universal Router, or smart contracts | `/swap-integration`   |
-| [Pay With Tokens](./pay-with-any-token) | Fulfill HTTP 402 payment challenges using tokens via the Uniswap Trading API  | `/pay-with-any-token` |
-
-### uniswap-viem Plugin
-
-| Skill                                  | Description                                     | Invocation          |
-| -------------------------------------- | ----------------------------------------------- | ------------------- |
-| [viem Integration](./viem-integration) | EVM blockchain integration using viem and wagmi | `/viem-integration` |
-
-### uniswap-driver Plugin
+### ring-driver Plugin
 
 | Skill                                    | Description                                 | Invocation           |
 | ---------------------------------------- | ------------------------------------------- | -------------------- |
@@ -44,23 +31,15 @@ Skills are AI-powered capabilities that help you build on Uniswap. Each skill is
 
 ## Using Skills
 
-### Direct Invocation
-
-Use the slash command to invoke a skill directly:
-
-```text
-/v4-security-foundations
-```
-
 ### Contextual Activation
 
 Skills also activate contextually when you describe what you want:
 
 ```text
-What are the security risks of beforeSwapReturnDelta?
+Help me load dappsdk.js and fix iframe embedding for Ring Wallet
 ```
 
-Claude will recognize this relates to v4 hook security and apply the relevant skill.
+Claude will recognize this as a Ring Wallet integration request and apply the relevant skill.
 
 ## Skill Structure
 
@@ -79,4 +58,4 @@ To add a new skill:
 3. Update the plugin's `plugin.json` to include the skill
 4. Add an eval suite under `evals/suites/<skill-name>/`
 
-See the [CLAUDE.md](https://github.com/uniswap/uniswap-ai/blob/main/CLAUDE.md) for plugin architecture details.
+See the [CLAUDE.md](https://github.com/ringprotocol/ring-ai/blob/main/CLAUDE.md) for plugin architecture details.

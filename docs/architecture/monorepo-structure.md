@@ -5,12 +5,12 @@ order: 2
 
 # Monorepo Structure
 
-This page details the organization of the uniswap-ai repository.
+This page details the organization of the ring-ai repository.
 
 ## Directory Layout
 
 ```text
-uniswap-ai/
+ring-ai/
 ├── .claude/                # Claude Code configuration
 │   └── rules/              # Agent rules (agnostic design)
 ├── .claude-plugin/         # Claude Code marketplace config
@@ -43,9 +43,9 @@ uniswap-ai/
 
 ## Package Scopes
 
-| Type    | Scope      | npm | Marketplace                   |
-| ------- | ---------- | --- | ----------------------------- |
-| Plugins | `@uniswap` | No  | Yes (Claude Code Marketplace) |
+| Type    | Scope   | npm | Marketplace                   |
+| ------- | ------- | --- | ----------------------------- |
+| Plugins | `@ring` | No  | Yes (Claude Code Marketplace) |
 
 ## Nx Configuration
 

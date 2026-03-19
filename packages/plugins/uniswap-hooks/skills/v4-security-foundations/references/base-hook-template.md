@@ -1,6 +1,6 @@
 # Base Hook Template
 
-A security-first Solidity template for Uniswap v4 hooks with all permissions disabled by default.
+A security-first Solidity template for Ring v4 hooks with all permissions disabled by default.
 
 ## Complete Template
 

@@ -11,7 +11,7 @@ No authentication required. 300 requests/minute.
 
 **Network IDs:** `ethereum`, `base`, `arbitrum`, `optimism`, `polygon`, `bsc`, `avalanche`, `unichain` (full list with DefiLlama equivalents in `../../references/chains.md`)
 
-**Coverage note:** Ethereum, Base, and Arbitrum have deep Uniswap pool data. Celo, Blast, Zora, and World Chain have limited coverage — expect fewer results and potentially missing pairs.
+**Coverage note:** Ethereum, Base, and Arbitrum have deep Ring pool data. Celo, Blast, Zora, and World Chain have limited coverage — expect fewer results and potentially missing pairs.
 
 ### Get Token Price
 
@@ -58,7 +58,7 @@ curl -s "https://api.dexscreener.com/token-boosts/top/v1" | \
 ```bash
 # Find all pools containing a token
 curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
-  jq '[.[] | select(.dexId == "uniswap")] | map({
+  jq '[.[] | select(.dexId == "ring")] | map({
     pairAddress,
     baseToken: .baseToken.symbol,
     quoteToken: .quoteToken.symbol,
@@ -80,7 +80,7 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/{network}/{address}" | \
 
 ### Important Notes
 
-- **Filter by DEX**: Results include all DEXes. Filter with `select(.dexId == "uniswap")` for Uniswap-only.
+- **Filter by DEX**: Results include all DEXes. Filter with `select(.dexId == "ring")` for Ring-only.
 - **Multiple pools**: Same pair may have multiple pools (different fee tiers). Highest liquidity is usually best for swaps.
 
 ## DefiLlama API (Fallback)
@@ -113,7 +113,7 @@ For "swap 1 ETH to USDC" requests:
 ```bash
 # 1. Get both token prices from DexScreener
 curl -s "https://api.dexscreener.com/token-pairs/v1/base/0x4200000000000000000000000000000000000006" | \
-  jq '[.[] | select(.dexId == "uniswap" and .quoteToken.symbol == "USDC")] | .[0] | {
+  jq '[.[] | select(.dexId == "ring" and .quoteToken.symbol == "USDC")] | .[0] | {
     ethPrice: .baseToken.priceUsd,
     usdcPrice: .quoteToken.priceUsd,
     poolLiquidity: .liquidity.usd
@@ -136,7 +136,7 @@ For "find trending tokens to swap" requests:
 ```bash
 # Get pools with high volume on the chain
 curl -s "https://api.dexscreener.com/latest/dex/search?q=base" | \
-  jq '[.pairs[] | select(.chainId == "base" and .dexId == "uniswap")] |
+  jq '[.pairs[] | select(.chainId == "base" and .dexId == "ring")] |
     sort_by(-.volume.h24) | .[0:10] | map({
       token: .baseToken.symbol,
       price: .priceUsd,
@@ -150,7 +150,7 @@ curl -s "https://api.dexscreener.com/latest/dex/search?q=base" | \
 ```bash
 # Find pools for the token pair and check liquidity
 curl -s "https://api.dexscreener.com/token-pairs/v1/base/{token_address}" | \
-  jq '[.[] | select(.dexId == "uniswap")] | max_by(.liquidity.usd) | {
+  jq '[.[] | select(.dexId == "ring")] | max_by(.liquidity.usd) | {
     pool: .pairAddress,
     liquidity: .liquidity.usd,
     volume24h: .volume.h24
@@ -168,9 +168,9 @@ curl -s "https://api.dexscreener.com/token-pairs/v1/base/{token_address}" | \
 
 ## Error Handling
 
-| Scenario                  | Action                                          |
-| ------------------------- | ----------------------------------------------- |
-| DexScreener returns empty | Try DefiLlama for price                         |
-| Token not found           | Use web search to verify token exists           |
-| No Uniswap pools          | Inform user the pair isn't available on Uniswap |
-| Very low liquidity        | Warn user about slippage risk                   |
+| Scenario                  | Action                                       |
+| ------------------------- | -------------------------------------------- |
+| DexScreener returns empty | Try DefiLlama for price                      |
+| Token not found           | Use web search to verify token exists        |
+| No Ring pools             | Inform user the pair isn't available on Ring |
+| Very low liquidity        | Warn user about slippage risk                |

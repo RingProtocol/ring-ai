@@ -1,17 +1,17 @@
 {
-  "name": "@uniswap/uniswap-driver",
+  "name": "@ring/ring-driver",
   "version": "0.2.0",
   "private": true,
-  "description": "AI-powered assistance for planning Uniswap swaps and liquidity positions",
+  "description": "AI-powered assistance for planning Ring swaps and liquidity positions",
   "author": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "ai-services@ring.org"
   },
   "license": "MIT",
   "keywords": [
     "claude-code",
     "plugin",
-    "uniswap",
+    "ring",
     "swap",
     "liquidity",
     "defi",

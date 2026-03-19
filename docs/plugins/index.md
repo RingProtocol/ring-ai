@@ -5,22 +5,22 @@ order: 1
 
 # Plugins Overview
 
-Plugins are the primary distribution mechanism for Uniswap AI tools. Each plugin is a self-contained package that provides skills and agents for Claude Code.
+Plugins are the primary distribution mechanism for Ring AI tools. Each plugin is a self-contained package that provides skills and agents for Claude Code.
 
 ## Available Plugins
 
-| Plugin                               | Description                                | Skills                               |
-| ------------------------------------ | ------------------------------------------ | ------------------------------------ |
-| [uniswap-hooks](./uniswap-hooks)     | Security-first Uniswap V4 hook development | v4-security-foundations              |
-| [uniswap-cca](./uniswap-cca)         | CCA auction configuration and deployment   | configurator, deployer               |
-| [uniswap-trading](./uniswap-trading) | Uniswap swap integration                   | swap-integration, pay-with-any-token |
-| [uniswap-viem](./uniswap-viem)       | EVM blockchain integration with viem/wagmi | viem-integration                     |
-| [uniswap-driver](./uniswap-driver)   | Swap and liquidity deep link planning      | swap-planner, liquidity-planner      |
+| Plugin                         | Description                                | Skills                               |
+| ------------------------------ | ------------------------------------------ | ------------------------------------ |
+| [ring-hooks](./ring-hooks)     | Security-first Ring V4 hook development    | v4-security-foundations              |
+| [ring-cca](./ring-cca)         | CCA auction configuration and deployment   | configurator, deployer               |
+| [ring-trading](./ring-trading) | Ring swap integration                      | swap-integration, pay-with-any-token |
+| [ring-viem](./ring-viem)       | EVM blockchain integration with viem/wagmi | viem-integration                     |
+| [ring-driver](./ring-driver)   | Swap and liquidity deep link planning      | swap-planner, liquidity-planner      |
 
 **Installation:**
 
 ```bash
-/plugin marketplace add uniswap/uniswap-ai
+/plugin marketplace add ring/ring-ai
 ```
 
 ## Plugin Architecture
@@ -49,12 +49,12 @@ The `plugin.json` file defines the plugin:
 
 ```json
 {
-  "name": "uniswap-hooks",
+  "name": "ring-hooks",
   "version": "1.3.0",
-  "description": "AI-powered assistance for creating Uniswap V4 hooks",
+  "description": "AI-powered assistance for creating Ring V4 hooks",
   "author": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "ai-services@ring.org"
   },
   "license": "MIT",
   "skills": ["./skills/v4-security-foundations"]
@@ -73,7 +73,7 @@ name: skill-name
 description: What the skill does
 license: MIT
 metadata:
-  author: uniswap
+  author: ring
 ---
 
 # Skill Name
@@ -96,7 +96,7 @@ description: Expert agent for complex swap integration questions
 Instructions for the agent on how to handle specialized queries...
 ```
 
-Not all plugins include agents. Currently, `uniswap-trading` and `uniswap-viem` provide specialized expert agents.
+Not all plugins include agents. Currently, `ring-trading` and `ring-viem` provide specialized expert agents.
 
 ## Versioning
 

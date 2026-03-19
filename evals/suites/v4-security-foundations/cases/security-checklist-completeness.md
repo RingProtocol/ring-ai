@@ -1,6 +1,6 @@
 # Security Checklist Completeness
 
-You are preparing a pre-deployment security checklist for a Uniswap V4 hook.
+You are preparing a pre-deployment security checklist for a Ring V4 hook.
 
 ## Context
 

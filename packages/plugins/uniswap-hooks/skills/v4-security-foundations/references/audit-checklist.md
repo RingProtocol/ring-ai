@@ -1,6 +1,6 @@
 # v4 Hook Pre-Deployment Audit Checklist
 
-Comprehensive checklist for auditing Uniswap v4 hooks before deployment.
+Comprehensive checklist for auditing Ring v4 hooks before deployment.
 
 ## 1. Access Control
 

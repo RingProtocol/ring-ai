@@ -5,7 +5,7 @@ order: 3
 
 # v4 Security Foundations
 
-Security-first guide for building Uniswap v4 hooks. Hook vulnerabilities can drain user funds -- understand these concepts before writing any hook code.
+Security-first guide for building Ring v4 hooks. Hook vulnerabilities can drain user funds -- understand these concepts before writing any hook code.
 
 ## Invocation
 
@@ -70,7 +70,7 @@ This skill helps you:
 
 ## Related Resources
 
-- [Uniswap Hooks Plugin](/plugins/uniswap-hooks) - Parent plugin
-- [Uniswap v4 Docs](https://docs.uniswap.org/contracts/v4/overview) - Official documentation
-- [v4-core Repository](https://github.com/Uniswap/v4-core) - Source code
-- [Hook Permissions Guide](https://docs.uniswap.org/contracts/v4/concepts/hooks) - Permission reference
+- [Ring Hooks Plugin](/plugins/ring-hooks) - Parent plugin
+- [Ring v4 Docs](https://docs.ring.org/contracts/v4/overview) - Official documentation
+- [v4-core Repository](https://github.com/Ring/v4-core) - Source code
+- [Hook Permissions Guide](https://docs.ring.org/contracts/v4/concepts/hooks) - Permission reference

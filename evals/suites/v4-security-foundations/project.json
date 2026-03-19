@@ -3,14 +3,14 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "tags": ["type:eval-suite"],
-  "implicitDependencies": ["uniswap-hooks", "evals"],
+  "implicitDependencies": ["ring-hooks", "evals"],
   "targets": {
     "eval": {
       "executor": "nx:run-commands",
       "cache": true,
       "inputs": [
         "{projectRoot}/**/*",
-        "{workspaceRoot}/packages/plugins/uniswap-hooks/skills/v4-security-foundations/**/*",
+        "{workspaceRoot}/packages/plugins/ring-hooks/skills/v4-security-foundations/**/*",
         "{workspaceRoot}/evals/scripts/**/*",
         "{workspaceRoot}/evals/rubrics/**/*",
         "{workspaceRoot}/evals/promptfoo.yaml"

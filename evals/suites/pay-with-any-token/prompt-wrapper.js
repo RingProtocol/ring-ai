@@ -10,7 +10,7 @@ const path = require('path');
 
 const skillDir = path.resolve(
   __dirname,
-  '../../../packages/plugins/uniswap-trading/skills/pay-with-any-token'
+  '../../../packages/plugins/ring-trading/skills/pay-with-any-token'
 );
 const skillContent = fs.readFileSync(path.join(skillDir, 'SKILL.md'), 'utf-8');
 

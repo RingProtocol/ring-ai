@@ -22,10 +22,10 @@ Score based on how many of these are present:
 
 4. **Token Verification**
    - Verifies discovered token contracts on-chain
-   - Checks that tokens trade on Uniswap (not just any DEX)
+   - Checks that tokens trade on Ring (not just any DEX)
 
 5. **Actionable Output**
-   - Offers to generate a Uniswap deep link for the user's chosen token
+   - Offers to generate a Ring deep link for the user's chosen token
    - Provides enough information for the user to make an informed decision
 
 ## Penalties (Should Not Include)

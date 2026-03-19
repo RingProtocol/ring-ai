@@ -22,4 +22,4 @@ My wallet address is `0xMY_WALLET_ON_TEMPO`.
 
 Walk me through paying this using the on-Tempo swap path.
 
-My Uniswap API key is in the `UNISWAP_API_KEY` environment variable.
+My Ring API key is in the `UNISWAP_API_KEY` environment variable.

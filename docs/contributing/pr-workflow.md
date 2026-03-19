@@ -5,7 +5,7 @@ order: 2
 
 # PR Workflow
 
-This page details the pull request process for Uniswap AI contributions.
+This page details the pull request process for Ring AI contributions.
 
 ## Creating a PR
 

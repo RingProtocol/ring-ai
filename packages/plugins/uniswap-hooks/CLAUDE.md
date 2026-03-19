@@ -1,8 +1,8 @@
-# CLAUDE.md - uniswap-hooks Plugin
+# CLAUDE.md - ring-hooks Plugin
 
 ## Overview
 
-This plugin provides AI-powered, security-first assistance for creating Uniswap v4 hooks. It helps developers design, implement, and test custom hooks for the Uniswap V4 protocol with a strong emphasis on security best practices.
+This plugin provides AI-powered, security-first assistance for creating Ring v4 hooks. It helps developers design, implement, and test custom hooks for the Ring V4 protocol with a strong emphasis on security best practices.
 
 ## Plugin Components
 
@@ -10,7 +10,7 @@ This plugin provides AI-powered, security-first assistance for creating Uniswap 
 
 - **v4-security-foundations**: Security-first guide for v4 hook development (NoOp attacks, delta accounting, access control, audit checklists)
 
-## Uniswap v4 Hooks Architecture
+## Ring v4 Hooks Architecture
 
 Hooks are smart contracts that can intercept and modify pool actions at specific points:
 
@@ -77,7 +77,7 @@ v4 hooks must have specific address patterns where the last 14 bits encode which
 ## File Structure
 
 ```text
-uniswap-hooks/
+ring-hooks/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── skills/
@@ -95,6 +95,6 @@ uniswap-hooks/
 
 ## Related Resources
 
-- [Uniswap v4 Core](https://github.com/Uniswap/v4-core)
-- [v4 Periphery](https://github.com/Uniswap/v4-periphery)
-- [Hook Examples](https://github.com/Uniswap/v4-periphery/tree/main/src/lens)
+- [Ring v4 Core](https://github.com/Ring/v4-core)
+- [v4 Periphery](https://github.com/Ring/v4-periphery)
+- [Hook Examples](https://github.com/Ring/v4-periphery/tree/main/src/lens)

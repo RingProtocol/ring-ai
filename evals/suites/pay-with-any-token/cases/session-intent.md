@@ -20,7 +20,7 @@ requests. The 402 body is:
 ```
 
 My wallet is `0xcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCcCc3`. I hold USDC on Base.
-My Uniswap API key is in `UNISWAP_API_KEY`.
+My Ring API key is in `UNISWAP_API_KEY`.
 
 Plan all the steps to pay this 402 challenge and explain the commands and API
 calls I would run at each phase. Include how to handle the permit signing step

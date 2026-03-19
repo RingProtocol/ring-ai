@@ -1,6 +1,6 @@
 # Access Control Pattern Recognition
 
-You are reviewing a Uniswap V4 hook for access control vulnerabilities.
+You are reviewing a Ring V4 hook for access control vulnerabilities.
 
 ## Context
 

@@ -1,21 +1,13 @@
 {
-  "name": "uniswap-trading",
+  "name": "ring-trading",
   "version": "1.7.0",
-  "description": "Integrate Uniswap swaps via Trading API, Universal Router SDK, or direct smart contract calls",
+  "description": "Integrate Ring swaps via Trading API, Universal Router SDK, or direct smart contract calls",
   "author": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "ai-services@ring.org"
   },
-  "homepage": "https://github.com/uniswap/uniswap-ai",
-  "keywords": [
-    "uniswap",
-    "swap",
-    "defi",
-    "trading-api",
-    "universal-router",
-    "permit2",
-    "uniswap-viem"
-  ],
+  "homepage": "https://github.com/ringprotocol/ring-ai",
+  "keywords": ["ring", "swap", "defi", "trading-api", "universal-router", "permit2", "ring-viem"],
   "license": "MIT",
   "skills": ["./skills/swap-integration", "./skills/pay-with-any-token"],
   "agents": ["./agents/swap-integration-expert.md"]

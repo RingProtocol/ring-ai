@@ -1,12 +1,12 @@
 # Basic Swap Integration Test Case
 
-Build a complete swap integration using the Uniswap Trading API.
+Build a complete swap integration using the Ring Trading API.
 
 ## Context
 
 - TypeScript/Node.js backend script
 - Need to swap USDC to ETH on Ethereum mainnet
-- Using the Uniswap Trading API (not SDK)
+- Using the Ring Trading API (not SDK)
 - Have a private key for signing
 
 ## Requirements
@@ -19,7 +19,7 @@ Build a complete swap integration using the Uniswap Trading API.
 
 ## Constraints
 
-- Must use the Uniswap Trading API (<https://trade-api.gateway.uniswap.org/v1>)
+- Must use the Ring Trading API (<https://trade-api.gateway.ring.org/v1>)
 - Must handle the 3-step flow: check_approval -> quote -> swap
 - Must strip null permitData fields from the swap request
 - Must validate swap.data is non-empty before broadcasting

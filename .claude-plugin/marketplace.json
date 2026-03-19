@@ -1,39 +1,24 @@
 {
-  "name": "uniswap-ai",
+  "name": "ring-ai",
   "version": "1.0.0",
   "owner": {
-    "name": "Uniswap Labs",
-    "email": "ai-services@uniswap.org"
+    "name": "Ring Labs",
+    "email": "contact@ring.exchange"
   },
   "metadata": {
-    "description": "Uniswap-specific AI tools (skills, plugins, agents) for external developers and AI agents integrating the Uniswap ecosystem.",
-    "repository": "https://github.com/uniswap/uniswap-ai"
+    "description": "Ring-specific AI tools (skills, plugins, agents) for external developers and AI agents integrating the Ring ecosystem.",
+    "repository": "https://github.com/ringprotocol/ring-ai"
   },
   "plugins": [
     {
-      "name": "uniswap-hooks",
-      "source": "./packages/plugins/uniswap-hooks",
-      "description": "AI-powered assistance for creating Uniswap V4 hooks"
+      "name": "ring-trading",
+      "source": "./packages/plugins/ring-trading",
+      "description": "Integrate Ring swaps via Trading API, Universal Router, and SDKs"
     },
     {
-      "name": "uniswap-cca",
-      "source": "./packages/plugins/uniswap-cca",
-      "description": "Configure and deploy Continuous Clearing Auction (CCA) smart contracts for token distribution"
-    },
-    {
-      "name": "uniswap-viem",
-      "source": "./packages/plugins/uniswap-viem",
-      "description": "EVM blockchain integration using viem and wagmi"
-    },
-    {
-      "name": "uniswap-trading",
-      "source": "./packages/plugins/uniswap-trading",
-      "description": "Integrate Uniswap swaps via Trading API, Universal Router, and SDKs"
-    },
-    {
-      "name": "uniswap-driver",
-      "source": "./packages/plugins/uniswap-driver",
-      "description": "AI-powered assistance for planning Uniswap swaps and liquidity positions"
+      "name": "ring-driver",
+      "source": "./packages/plugins/ring-driver",
+      "description": "AI-powered assistance for planning Ring swaps and liquidity positions"
     },
     {
       "name": "ring-wallet",

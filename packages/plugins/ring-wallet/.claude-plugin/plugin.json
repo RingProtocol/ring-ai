@@ -6,7 +6,7 @@
     "name": "Ring Protocol",
     "email": "dev@ring.exchange"
   },
-  "homepage": "https://github.com/ringprotocol/uniswap-ai",
+  "homepage": "https://github.com/ringprotocol/ring-ai",
   "keywords": ["ring-wallet", "dapp", "eip-1193", "eip-6963", "iframe", "integration"],
   "license": "MIT",
   "skills": ["./skills/dapp-to-ringwallet"]
