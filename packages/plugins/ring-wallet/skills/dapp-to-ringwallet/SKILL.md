@@ -1,65 +1,149 @@
 ---
 name: dapp-to-ringwallet
-description: Guides integrating a DApp into Ring Wallet using dappsdk.js, CSP, and iframe requirements. Invoke when user wants Ring Wallet integration or asks about the Ring Wallet SDK.
-allowed-tools: Read, Glob, Grep
+description: Integrates a DApp into Ring Wallet by adding dappsdk.js and configuring CSP for iframe embedding.
+allowed-tools: Read, Write, StrReplace, Glob, Grep, Shell, ReadLints
 model: sonnet
 license: MIT
 metadata:
   author: ringprotocol
-  version: '0.1.0'
+  version: '0.2.0'
 ---
 
 # DApp to Ring Wallet Integration
 
-Integrate a DApp into Ring Wallet using the official SDK and required embedding settings.
+Ring Wallet is a DApp container that opens DApps inside an iframe. Integration requires **two mandatory changes** — both MUST be completed:
+
+1. **Add `dappsdk.js`** — the SDK script that provides `window.ethereum` (EIP-1193) and EIP-6963 provider discovery inside the Ring Wallet iframe.
+2. **Add CSP (Content Security Policy)** — allow the SDK script source and allow Ring Wallet to embed the DApp in an iframe.
 
 ## When to Use
 
-Use this skill when the user asks how to integrate their DApp into Ring Wallet, how to use the Ring Wallet SDK, or how to make a DApp run inside Ring Wallet’s iframe.
+Use this skill when the user asks to integrate their DApp with Ring Wallet, add the Ring Wallet SDK, or make a DApp work inside Ring Wallet's iframe.
 
-## Source of Truth
+---
 
-Use [references/dapp-integration.md](../../references/dapp-integration.md) as the canonical integration specification. Keep answers aligned with that file when details conflict with user assumptions.
+## Step 1: Add dappsdk.js
 
-## Working Rules
+### What it does
 
-1. Always provide an ordered integration checklist.
-2. Prefer self-hosting `dappsdk.js` unless the user explicitly requires wallet-hosted loading.
-3. Include both mandatory compatibility requirements:
-   - CSP `script-src` allowlist for the chosen loading mode
-   - iframe embedding compatibility and `X-Frame-Options` remediation
-4. Explain provider behavior in both contexts:
-   - inside Ring Wallet iframe
-   - standalone browser page with existing extensions
-5. Include testing guidance with `?testdapp=YOUR_API_KEY`.
+- **EIP-1193**: Injects `window.ethereum` with a `RingWalletProvider` that communicates with the parent Ring Wallet frame via `postMessage`.
+- **EIP-6963**: Announces the wallet via `eip6963:announceProvider` events (rdns: `org.testring.ringwallet`). Wagmi 2+, ConnectKit, RainbowKit, and similar libraries auto-discover it.
+- **Network proxy**: When loaded inside Ring Wallet, intercepts `fetch`/`XHR` to route requests through the wallet's proxy, eliminating CORS issues for the DApp.
+- **Inside iframe**: Always overrides `window.ethereum`. The DApp talks to Ring Wallet exclusively.
+- **Standalone browser**: Only sets `window.ethereum` if no other wallet exists. Announces via EIP-6963 so wallet-selection UIs can discover it without conflicting with MetaMask or other extensions.
 
-## Required Output Structure
+### How to add
 
-When responding, structure the output in this order:
+1. Find the HTML entry point(s) — typically `index.html` at the app root.
+2. Add a `<script>` tag in `<head>`, **before** any app bundle `<script>` tags:
 
-1. Registration prerequisites
-2. SDK loading choice (Option A vs Option B)
-3. Exact script tag placement
-4. CSP requirements
-5. `window.ethereum` and EIP-6963 behavior
-6. iframe/X-Frame-Options requirements
-7. Testing URL and validation checklist
+```html
+<script src="https://wallet.testring.org/dappsdk.js"></script>
+```
+
+The script MUST load before the app initializes so `window.ethereum` and EIP-6963 announcements are ready when wagmi/ethers/web3 starts.
+
+If the user provides a different dappsdk.js URL (self-hosted or alternate environment), use that URL instead.
+
+---
+
+## Step 2: Add CSP Configuration
+
+**Both sub-steps (2a and 2b) are MANDATORY. Do NOT skip either one.**
+
+### 2a. Allow the SDK script source (`script-src`)
+
+The DApp must allow scripts from the `dappsdk.js` host domain.
+
+**If the DApp already has a CSP** (via `<meta>` tag or HTTP headers): add `https://wallet.testring.org` to the existing `script-src` directive.
+
+**If the DApp has NO existing CSP**: add a `<meta>` tag in `<head>`, before the dappsdk.js script tag:
+
+```html
+<meta
+  http-equiv="Content-Security-Policy"
+  content="script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://wallet.testring.org;"
+/>
+```
+
+`'unsafe-inline'` and `'unsafe-eval'` are included because most Vite/React/webpack apps require them. `'wasm-unsafe-eval'` is included because many DeFi DApps use WebAssembly. Adjust based on the app's actual needs.
+
+### 2b. Allow iframe embedding (`frame-ancestors`)
+
+Ring Wallet embeds the DApp in an iframe. The DApp MUST allow this via `frame-ancestors`.
+
+**IMPORTANT**: `frame-ancestors` CANNOT be set via `<meta>` tags — it MUST be set via HTTP response headers in the deployment configuration.
+
+#### Vercel (`vercel.json`)
+
+Add or merge into the existing `vercel.json`:
+
+```json
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://wallet.testring.org;"
+        }
+      ]
+    }
+  ]
+}
+```
+
+If `vercel.json` already has other config (e.g. `rewrites`), merge the `headers` array into the existing file — do not overwrite.
+
+#### Netlify / Fleek (`_headers` file)
+
+```
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://wallet.testring.org;
+```
+
+#### X-Frame-Options remediation
+
+If the DApp sets `X-Frame-Options: DENY` or `X-Frame-Options: SAMEORIGIN`, this blocks iframe embedding. Remove any `X-Frame-Options` header and use `frame-ancestors` CSP instead. `frame-ancestors` supersedes `X-Frame-Options`.
+
+---
+
+## Implementation Checklist
+
+When implementing, complete ALL of the following:
+
+1. Find all HTML entry points (`index.html` files for each app)
+2. Add `<meta http-equiv="Content-Security-Policy" ...>` in `<head>` (or update existing CSP) to allow `script-src ... https://wallet.testring.org`
+3. Add `<script src="https://wallet.testring.org/dappsdk.js"></script>` in `<head>` before app bundle scripts
+4. Find deployment config (`vercel.json`, `_headers`, server config, etc.)
+5. Add `frame-ancestors 'self' https://wallet.testring.org` via HTTP headers in deployment config
+6. Check for and remove any `X-Frame-Options` headers that block iframe embedding
+
+---
+
+## Testing
+
+Test the integration at:
+
+```
+https://wallet.testring.org/?testdapp=YOUR_API_KEY
+```
+
+Verify:
+
+- Console shows: `[Ring Wallet] DApp SDK v1.0.0 initialized (iframe mode)`
+- `window.ethereum.isRingWallet === true` inside the iframe
+- Wallet connection (`eth_requestAccounts`) returns accounts
+- Transaction signing works
+- Chain switching (`chainChanged` events) propagates correctly
+
+---
 
 ## Do Not Do
 
-- Do not recommend skipping CSP checks when CSP exists.
-- Do not omit `X-Frame-Options` compatibility when diagnosing iframe load failures.
-- Do not claim Ring Wallet requires non-standard wallet APIs.
-- Do not remove EIP-1193 or EIP-6963 references from integration guidance.
-
-## Quick Response Template
-
-Use this concise format when the user asks for direct instructions:
-
-1. Register DApp and get API key
-2. Load `dappsdk.js` (recommend self-host)
-3. Place `<script>` in `<head>` before app bundles
-4. Configure CSP `script-src` for selected loading path
-5. Verify EIP-1193 (`window.ethereum`) and EIP-6963 (`exchange.ring.wallet`)
-6. Ensure iframe compatibility by fixing `X-Frame-Options`
-7. Test with `https://wallet.ring.exchange/?testdapp=YOUR_API_KEY`
+- Do NOT skip CSP — both `script-src` and `frame-ancestors` are mandatory.
+- Do NOT treat CSP as optional or "only if CSP exists" — always add it.
+- Do NOT place the `<script>` tag after app bundle scripts — it must load first.
+- Do NOT use `X-Frame-Options` — use `frame-ancestors` CSP directive instead.
+- Do NOT claim Ring Wallet requires non-standard wallet APIs — it uses standard EIP-1193 and EIP-6963.

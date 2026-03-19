@@ -9,13 +9,10 @@ Plugins are the primary distribution mechanism for Ring AI tools. Each plugin is
 
 ## Available Plugins
 
-| Plugin                         | Description                                | Skills                               |
-| ------------------------------ | ------------------------------------------ | ------------------------------------ |
-| [ring-hooks](./ring-hooks)     | Security-first Ring V4 hook development    | v4-security-foundations              |
-| [ring-cca](./ring-cca)         | CCA auction configuration and deployment   | configurator, deployer               |
-| [ring-trading](./ring-trading) | Ring swap integration                      | swap-integration, pay-with-any-token |
-| [ring-viem](./ring-viem)       | EVM blockchain integration with viem/wagmi | viem-integration                     |
-| [ring-driver](./ring-driver)   | Swap and liquidity deep link planning      | swap-planner, liquidity-planner      |
+| Plugin                         | Description                           | Skills                               |
+| ------------------------------ | ------------------------------------- | ------------------------------------ |
+| [ring-trading](./ring-trading) | Ring swap integration                 | swap-integration, pay-with-any-token |
+| [ring-driver](./ring-driver)   | Swap and liquidity deep link planning | swap-planner, liquidity-planner      |
 
 **Installation:**
 
