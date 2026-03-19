@@ -17,179 +17,49 @@ Integrate a DApp into Ring Wallet using the official SDK and required embedding 
 
 Use this skill when the user asks how to integrate their DApp into Ring Wallet, how to use the Ring Wallet SDK, or how to make a DApp run inside Ring Wallet’s iframe.
 
-## Required Inputs to Collect
+## Source of Truth
 
-- DApp name
-- DApp URL
-- DApp logo (256×256 PNG or SVG)
-- Ring Wallet host URL (default is <https://wallet.ring.exchange>)
-- API key for testing (provided by Ring Wallet team)
+Use [references/dapp-integration.md](../../references/dapp-integration.md) as the canonical integration specification. Keep answers aligned with that file when details conflict with user assumptions.
 
-## Integration Steps
+## Working Rules
 
-### 1. Register the DApp
+1. Always provide an ordered integration checklist.
+2. Prefer self-hosting `dappsdk.js` unless the user explicitly requires wallet-hosted loading.
+3. Include both mandatory compatibility requirements:
+   - CSP `script-src` allowlist for the chosen loading mode
+   - iframe embedding compatibility and `X-Frame-Options` remediation
+4. Explain provider behavior in both contexts:
+   - inside Ring Wallet iframe
+   - standalone browser page with existing extensions
+5. Include testing guidance with `?testdapp=YOUR_API_KEY`.
 
-Ask the user to contact the Ring Wallet team and provide:
+## Required Output Structure
 
-- DApp name
-- Logo (256×256 PNG or SVG)
-- DApp URL
+When responding, structure the output in this order:
 
-They will receive an API key (UUID) for testing.
+1. Registration prerequisites
+2. SDK loading choice (Option A vs Option B)
+3. Exact script tag placement
+4. CSP requirements
+5. `window.ethereum` and EIP-6963 behavior
+6. iframe/X-Frame-Options requirements
+7. Testing URL and validation checklist
 
-### 2. Integrate the SDK
+## Do Not Do
 
-The SDK source of truth in this repo is `public/dappsdk.js` and is served as `/dappsdk.js` in the wallet. All injection and path references are wired through `src/server/dappsdk.ts`. When the SDK changes, only edit `public/dappsdk.js`.
+- Do not recommend skipping CSP checks when CSP exists.
+- Do not omit `X-Frame-Options` compatibility when diagnosing iframe load failures.
+- Do not claim Ring Wallet requires non-standard wallet APIs.
+- Do not remove EIP-1193 or EIP-6963 references from integration guidance.
 
-Choose one of two loading options.
+## Quick Response Template
 
-#### Option A: Self-host (recommended)
+Use this concise format when the user asks for direct instructions:
 
-Copy `public/dappsdk.js` into the DApp’s static/public directory and load it from `/dappsdk.js`.
-
-| Framework   | Location               |
-| ----------- | ---------------------- |
-| Plain HTML  | Same directory as HTML |
-| React (CRA) | public/dappsdk.js      |
-| Next.js     | public/dappsdk.js      |
-| Vue (Vite)  | public/dappsdk.js      |
-
-#### Option B: Load from Ring Wallet
-
-Use the wallet host URL, for example `https://wallet.ring.exchange/dappsdk.js`.
-
-### 3. Add the Script Tag
-
-Add the script tag at the top of `<head>` before app bundles.
-
-```html
-<head>
-  <script src="/dappsdk.js"></script>
-</head>
-```
-
-If loading from the wallet host, use:
-
-```html
-<head>
-  <script src="https://wallet.ring.exchange/dappsdk.js"></script>
-</head>
-```
-
-Next.js App Router example:
-
-```tsx
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <head>
-        <script src="/dappsdk.js" />
-      </head>
-      <body>{children}</body>
-    </html>
-  );
-}
-```
-
-Next.js Pages Router example:
-
-```tsx
-import { Html, Head, Main, NextScript } from 'next/document';
-
-export default function Document() {
-  return (
-    <Html>
-      <Head>
-        <script src="/dappsdk.js" />
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
-}
-```
-
-### 4. CSP Allowlist
-
-If the DApp uses Content-Security-Policy, ensure the SDK script is allowed.
-
-Self-hosted:
-
-```text
-script-src 'self' 'unsafe-inline';
-```
-
-Loaded from Ring Wallet:
-
-```text
-script-src 'self' https://wallet.ring.exchange
-```
-
-If there is no CSP, no change is needed.
-
-### 5. What the SDK Injects
-
-The SDK injects an EIP-1193 provider at `window.ethereum` and announces via EIP-6963.
-
-Provider identification:
-
-```javascript
-window.ethereum;
-window.ethereum.isRingWallet;
-```
-
-Detect Ring Wallet via EIP-6963:
-
-```javascript
-window.addEventListener('eip6963:announceProvider', (event) => {
-  if (event.detail.info.rdns === 'exchange.ring.wallet') {
-    const provider = event.detail.provider;
-  }
-});
-window.dispatchEvent(new Event('eip6963:requestProvider'));
-```
-
-Check if running inside Ring Wallet:
-
-```javascript
-function isInRingWallet() {
-  return !!(window.ethereum && window.ethereum.isRingWallet);
-}
-```
-
-SDK behavior rules:
-
-- In Ring Wallet’s iframe, the SDK always overrides `window.ethereum`
-- As a standalone page, the SDK only injects if `window.ethereum` is not already present
-
-### 6. Allow Iframe Embedding
-
-Ring Wallet loads DApps in an iframe. Ensure your server does not send:
-
-- `X-Frame-Options: DENY`
-- `X-Frame-Options: SAMEORIGIN`
-
-Adjust headers in the framework or CDN so embedding is allowed.
-
-### 7. Test the Integration
-
-Open Ring Wallet with the test key:
-
-```text
-https://wallet.ring.exchange/?testdapp=YOUR_API_KEY
-```
-
-Example:
-
-```text
-http://localhost:3000/?testdapp=a3f2b1c8-9d4e-4f5a-b6c7-1234567890ab
-```
-
-Verification checklist:
-
-- Wallet connect dialog appears
-- Transactions trigger confirmation dialog
-- Signature requests work
-- Rejecting a request returns an error
+1. Register DApp and get API key
+2. Load `dappsdk.js` (recommend self-host)
+3. Place `<script>` in `<head>` before app bundles
+4. Configure CSP `script-src` for selected loading path
+5. Verify EIP-1193 (`window.ethereum`) and EIP-6963 (`exchange.ring.wallet`)
+6. Ensure iframe compatibility by fixing `X-Frame-Options`
+7. Test with `https://wallet.ring.exchange/?testdapp=YOUR_API_KEY`

@@ -64,6 +64,7 @@ uniswap-ai/
 │       ├── uniswap-cca/     # Continuous Clearing Auction (CCA) plugin
 │       ├── uniswap-driver/  # Swap & liquidity deep link planning
 │       ├── uniswap-hooks/   # Uniswap v4 hooks plugin
+│       ├── ring-wallet/     # Ring Wallet DApp integration guidance
 │       ├── uniswap-trading/ # Uniswap swap integration
 │       └── uniswap-viem/    # EVM blockchain integration (viem/wagmi)
 ├── scripts/                 # Build/validation scripts

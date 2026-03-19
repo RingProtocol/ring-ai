@@ -1,6 +1,6 @@
 {
   "name": "ring-wallet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Integrate DApps into Ring Wallet using the official SDK and iframe embedding requirements",
   "author": {
     "name": "Ring Protocol",

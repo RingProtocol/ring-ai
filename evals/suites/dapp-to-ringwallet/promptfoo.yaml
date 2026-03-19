@@ -10,6 +10,7 @@ defaultTest:
     timeout: 120000
   vars:
     skill_content: file://../../../packages/plugins/ring-wallet/skills/dapp-to-ringwallet/SKILL.md
+    reference_content: file://../../../packages/plugins/ring-wallet/references/dapp-integration.md
 tests:
   - vars:
       case_content: file://cases/basic.md
