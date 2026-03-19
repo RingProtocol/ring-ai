@@ -87,6 +87,10 @@ Add or merge into the existing `vercel.json`:
         {
           "key": "Content-Security-Policy",
           "value": "frame-ancestors 'self' https://wallet.testring.org;"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
         }
       ]
     }
@@ -101,11 +105,12 @@ If `vercel.json` already has other config (e.g. `rewrites`), merge the `headers`
 ```
 /*
   Content-Security-Policy: frame-ancestors 'self' https://wallet.testring.org;
+  X-Frame-Options: SAMEORIGIN
 ```
 
 #### X-Frame-Options remediation
 
-If the DApp sets `X-Frame-Options: DENY` or `X-Frame-Options: SAMEORIGIN`, this blocks iframe embedding. Remove any `X-Frame-Options` header and use `frame-ancestors` CSP instead. `frame-ancestors` supersedes `X-Frame-Options`.
+Many hosting platforms (e.g. Vercel) set `X-Frame-Options: DENY` by default, which blocks iframe embedding. You MUST explicitly override it by setting `X-Frame-Options: SAMEORIGIN` in the deployment headers (as shown in the examples above). While `frame-ancestors` CSP is the modern standard, `X-Frame-Options` must also be set because browsers still enforce it and platform defaults cannot be removed — only overridden.
 
 ---
 
@@ -118,7 +123,7 @@ When implementing, complete ALL of the following:
 3. Add `<script src="https://wallet.testring.org/dappsdk.js"></script>` in `<head>` before app bundle scripts
 4. Find deployment config (`vercel.json`, `_headers`, server config, etc.)
 5. Add `frame-ancestors 'self' https://wallet.testring.org` via HTTP headers in deployment config
-6. Check for and remove any `X-Frame-Options` headers that block iframe embedding
+6. Override `X-Frame-Options` to `SAMEORIGIN` in deployment headers (platforms like Vercel default to `DENY`)
 
 ---
 
@@ -145,5 +150,5 @@ Verify:
 - Do NOT skip CSP — both `script-src` and `frame-ancestors` are mandatory.
 - Do NOT treat CSP as optional or "only if CSP exists" — always add it.
 - Do NOT place the `<script>` tag after app bundle scripts — it must load first.
-- Do NOT use `X-Frame-Options` — use `frame-ancestors` CSP directive instead.
+- Do NOT leave `X-Frame-Options` as `DENY` — override it to `SAMEORIGIN` in deployment headers alongside the `frame-ancestors` CSP directive.
 - Do NOT claim Ring Wallet requires non-standard wallet APIs — it uses standard EIP-1193 and EIP-6963.
