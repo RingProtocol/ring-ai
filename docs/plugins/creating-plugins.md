@@ -52,7 +52,7 @@ Create `package.json`:
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ring/ring-ai.git",
+    "url": "https://github.com/RingProtocol/ring-ai.git",
     "directory": "packages/plugins/my-plugin"
   }
 }
