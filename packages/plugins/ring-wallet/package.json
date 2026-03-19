@@ -1,0 +1,24 @@
+{
+  "name": "@ringprotocol/ring-wallet",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-powered guidance for integrating DApps with Ring Wallet",
+  "author": {
+    "name": "Ring Protocol",
+    "email": "contact@ring.exchange"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "ring-wallet",
+    "dapp",
+    "integration",
+    "eip-1193",
+    "eip-6963"
+  ],
+  "files": [
+    ".claude-plugin",
+    "skills"
+  ]
+}

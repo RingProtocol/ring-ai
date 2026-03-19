@@ -1,0 +1,13 @@
+{
+  "name": "ring-wallet",
+  "version": "0.1.0",
+  "description": "Integrate DApps into Ring Wallet using the official SDK and iframe embedding requirements",
+  "author": {
+    "name": "Ring Protocol",
+    "email": "dev@ring.exchange"
+  },
+  "homepage": "https://github.com/ringprotocol/uniswap-ai",
+  "keywords": ["ring-wallet", "dapp", "eip-1193", "eip-6963", "iframe", "integration"],
+  "license": "MIT",
+  "skills": ["./skills/dapp-to-ringwallet"]
+}

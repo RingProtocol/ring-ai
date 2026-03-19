@@ -1,0 +1,47 @@
+# Completeness Rubric for dapp-to-ringwallet
+
+Evaluate whether the response is complete, practical, and implementation-ready for DApp teams integrating with Ring Wallet.
+
+## Expected Elements
+
+1. End-to-end structure
+   - Registration, SDK setup, CSP, iframe compatibility, testing
+   - Ordered steps that can be followed without guesswork
+
+2. Framework guidance
+   - Includes generic HTML guidance
+   - Includes Next.js App Router and Pages Router placement
+
+3. Operational details
+   - Includes concrete script tag examples
+   - Includes wallet-host URL example (`https://wallet.ring.exchange/dappsdk.js`)
+   - Includes testing URL example with `testdapp`
+
+4. Compatibility and behavior notes
+   - Clarifies iframe override behavior for `window.ethereum`
+   - Clarifies standalone behavior when another provider already exists
+
+5. Troubleshooting quality
+   - Mentions likely breakpoints (CSP and X-Frame-Options)
+   - Provides actionable remediation, not only theory
+
+## Penalties
+
+Subtract points for the following:
+
+- Missing `testdapp` URL guidance: -0.15
+- Missing CSP guidance: -0.15
+- Missing X-Frame-Options guidance: -0.15
+- Incorrect provider behavior description: -0.2
+
+## Scoring Guide
+
+Base score:
+- 5/5: 1.0
+- 4/5: 0.85
+- 3/5: 0.65
+- 2/5: 0.45
+- 1/5: 0.25
+- 0/5: 0.0
+
+Apply penalties after base score.

@@ -34,6 +34,11 @@
       "name": "uniswap-driver",
       "source": "./packages/plugins/uniswap-driver",
       "description": "AI-powered assistance for planning Uniswap swaps and liquidity positions"
+    },
+    {
+      "name": "ring-wallet",
+      "source": "./packages/plugins/ring-wallet",
+      "description": "Integrate DApps into Ring Wallet using dappsdk.js and iframe-safe settings"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "eval-suite-dapp-to-ringwallet",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "tags": ["type:eval-suite"],
+  "implicitDependencies": ["ring-wallet", "evals"],
+  "targets": {
+    "eval": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/**/*",
+        "{workspaceRoot}/packages/plugins/ring-wallet/skills/dapp-to-ringwallet/**/*",
+        "{workspaceRoot}/evals/scripts/**/*",
+        "{workspaceRoot}/evals/rubrics/**/*",
+        "{workspaceRoot}/evals/promptfoo.yaml"
+      ],
+      "outputs": ["{projectRoot}/results.json"],
+      "options": {
+        "command": "npx promptfoo eval -c suites/dapp-to-ringwallet/promptfoo.yaml --output suites/dapp-to-ringwallet/results.json --no-progress-bar",
+        "cwd": "evals"
+      },
+      "metadata": {
+        "description": "Run dapp-to-ringwallet eval suite"
+      }
+    }
+  }
+}

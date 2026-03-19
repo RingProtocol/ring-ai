@@ -1,0 +1,41 @@
+# Correctness Rubric for dapp-to-ringwallet
+
+Evaluate whether the response correctly explains Ring Wallet DApp integration based on the provided integration document.
+
+## Required Elements
+
+1. Registration requirements are correct:
+   - DApp name
+   - 256×256 logo
+   - DApp URL
+   - API key is provided by Ring Wallet team for testing
+
+2. SDK integration flow is correct:
+   - Mentions `dappsdk.js`
+   - Covers self-host and wallet-hosted loading options
+   - Recommends self-hosting
+   - Script is placed at top of head before app bundles
+
+3. Provider behavior is correct:
+   - Explains `window.ethereum` injection
+   - Includes `isRingWallet`
+   - Mentions EIP-1193 and EIP-6963
+   - Includes `exchange.ring.wallet` as RDNS signal
+
+4. Security and embedding requirements are correct:
+   - Covers CSP `script-src` requirements
+   - Covers iframe embedding requirement
+   - Explains `X-Frame-Options` DENY/SAMEORIGIN issue and fix
+
+5. Testing flow is correct:
+   - Uses test URL format `?testdapp=YOUR_API_KEY`
+   - Includes an actionable post-integration verification checklist
+
+## Scoring Guide
+
+- 5/5 correct: 1.0
+- 4/5 correct: 0.8
+- 3/5 correct: 0.6
+- 2/5 correct: 0.4
+- 1/5 correct: 0.2
+- 0/5 correct: 0.0

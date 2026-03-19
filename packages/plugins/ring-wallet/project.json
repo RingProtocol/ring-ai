@@ -1,0 +1,21 @@
+{
+  "name": "ring-wallet",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugins/ring-wallet",
+  "projectType": "library",
+  "tags": ["type:plugin", "scope:ringprotocol"],
+  "targets": {
+    "lint-markdown": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm exec markdownlint-cli2 -- 'packages/plugins/ring-wallet/**/*.md'"
+      }
+    },
+    "validate": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node scripts/validate-plugin.cjs packages/plugins/ring-wallet"
+      }
+    }
+  }
+}
