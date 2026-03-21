@@ -38,7 +38,7 @@ Use this skill when the user asks to integrate their DApp with Ring Wallet, add 
 2. Add a `<script>` tag in `<head>`, **before** any app bundle `<script>` tags:
 
 ```html
-<script src="https://wallet.testring.org/dappsdk.js"></script>
+<script src="https://wallet.ring.exchange/dappsdk.js"></script>
 ```
 
 The script MUST load before the app initializes so `window.ethereum` and EIP-6963 announcements are ready when wagmi/ethers/web3 starts.
@@ -55,14 +55,14 @@ If the user provides a different dappsdk.js URL (self-hosted or alternate enviro
 
 The DApp must allow scripts from the `dappsdk.js` host domain.
 
-**If the DApp already has a CSP** (via `<meta>` tag or HTTP headers): add `https://wallet.testring.org` to the existing `script-src` directive.
+**If the DApp already has a CSP** (via `<meta>` tag or HTTP headers): add `https://wallet.ring.exchange` to the existing `script-src` directive.
 
 **If the DApp has NO existing CSP**: add a `<meta>` tag in `<head>`, before the dappsdk.js script tag:
 
 ```html
 <meta
   http-equiv="Content-Security-Policy"
-  content="script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://wallet.testring.org;"
+  content="script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://wallet.ring.exchange;"
 />
 ```
 
@@ -86,7 +86,7 @@ Add or merge into the existing `vercel.json`:
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'self' https://wallet.testring.org;"
+          "value": "frame-ancestors 'self' https://wallet.ring.exchange;"
         },
         {
           "key": "X-Frame-Options",
@@ -104,7 +104,7 @@ If `vercel.json` already has other config (e.g. `rewrites`), merge the `headers`
 
 ```
 /*
-  Content-Security-Policy: frame-ancestors 'self' https://wallet.testring.org;
+  Content-Security-Policy: frame-ancestors 'self' https://wallet.ring.exchange;
   X-Frame-Options: SAMEORIGIN
 ```
 
@@ -119,10 +119,10 @@ Many hosting platforms (e.g. Vercel) set `X-Frame-Options: DENY` by default, whi
 When implementing, complete ALL of the following:
 
 1. Find all HTML entry points (`index.html` files for each app)
-2. Add `<meta http-equiv="Content-Security-Policy" ...>` in `<head>` (or update existing CSP) to allow `script-src ... https://wallet.testring.org`
-3. Add `<script src="https://wallet.testring.org/dappsdk.js"></script>` in `<head>` before app bundle scripts
+2. Add `<meta http-equiv="Content-Security-Policy" ...>` in `<head>` (or update existing CSP) to allow `script-src ... https://wallet.ring.exchange`
+3. Add `<script src="https://wallet.ring.exchange/dappsdk.js"></script>` in `<head>` before app bundle scripts
 4. Find deployment config (`vercel.json`, `_headers`, server config, etc.)
-5. Add `frame-ancestors 'self' https://wallet.testring.org` via HTTP headers in deployment config
+5. Add `frame-ancestors 'self' https://wallet.ring.exchange` via HTTP headers in deployment config
 6. Override `X-Frame-Options` to `SAMEORIGIN` in deployment headers (platforms like Vercel default to `DENY`)
 
 ---
@@ -132,7 +132,7 @@ When implementing, complete ALL of the following:
 Test the integration at:
 
 ```
-https://wallet.testring.org/?testdapp=YOUR_API_KEY
+https://wallet.ring.exchange/?testdapp=YOUR_API_KEY
 ```
 
 Verify:

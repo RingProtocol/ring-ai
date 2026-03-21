@@ -23,9 +23,9 @@ Or describe your requirements naturally:
 
 This skill helps you:
 
-- **Add SDK initialization**: Inject `https://wallet.testring.org/dappsdk.js` before app scripts so EIP-1193 and EIP-6963 are available early
+- **Add SDK initialization**: Inject `https://wallet.ring.exchange/dappsdk.js` before app scripts so EIP-1193 and EIP-6963 are available early
 - **Configure CSP script source**: Ensure `script-src` allows the Ring Wallet SDK domain
-- **Enable iframe embedding**: Add `frame-ancestors 'self' https://wallet.testring.org` through HTTP response headers
+- **Enable iframe embedding**: Add `frame-ancestors 'self' https://wallet.ring.exchange` through HTTP response headers
 - **Fix deployment headers**: Update Vercel, Netlify, or equivalent deployment config for CSP compatibility
 - **Remove blocking headers**: Replace `X-Frame-Options` restrictions with CSP `frame-ancestors`
 
@@ -41,7 +41,7 @@ Both changes are mandatory:
 - `window.ethereum.isRingWallet === true` inside Ring Wallet iframe
 - Wallet connection (`eth_requestAccounts`) works
 - Transaction signing and chain switching events work
-- DApp is embeddable at `https://wallet.testring.org/?testdapp=YOUR_API_KEY`
+- DApp is embeddable at `https://wallet.ring.exchange/?testdapp=YOUR_API_KEY`
 
 ## Runtime Compatibility
 
@@ -51,4 +51,4 @@ This skill can run with or without interactive prompts. If interactive question 
 
 - [ring-wallet Plugin](/plugins/ring-wallet) - Parent plugin
 - [Skills Overview](/skills/) - Browse all available skills
-- [Ring Wallet Test URL](https://wallet.testring.org/?testdapp=YOUR_API_KEY) - Integration verification
+- [Ring Wallet Test URL](https://wallet.ring.exchange/?testdapp=YOUR_API_KEY) - Integration verification
