@@ -132,7 +132,7 @@ When implementing, complete ALL of the following:
 Test the integration at:
 
 ```
-https://wallet.ring.exchange/?testdapp=YOUR_API_KEY
+https://wallet.ring.exchange/?testdapp=YOUR_API_KEY Or YOUR_DAPP_NAME
 ```
 
 Verify:
