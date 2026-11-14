@@ -1,0 +1,78 @@
+name: _Claude Code Review
+
+# Vendored replacement for Ring/ai-toolkit/.github/workflows/_claude-code-review.yml.
+# That external reference (Ring/ai-toolkit@67b4863) is unresolvable (404) which crashes
+# every "Claude Code Review" run before any job starts (runs 42084546629, 42415319992,
+# 42415673747, 42501316192 all failed with 0 jobs). This file keeps the workflow_call
+# interface identical so no caller changes are needed beyond the local `uses:` reference.
+
+on:
+  workflow_call:
+    inputs:
+      pr_number:
+        description: "Pull request number to review"
+        required: true
+        type: string
+      base_ref:
+        description: "Base ref of the pull request"
+        required: false
+        type: string
+        default: "main"
+      force_review:
+        description: "Force a full review even if the code has not changed"
+        required: false
+        type: boolean
+        default: true
+      max_diff_lines:
+        description: "Maximum number of diff lines to review"
+        required: false
+        type: number
+        default: 5000
+      model:
+        description: "Claude model used for the review"
+        required: false
+        type: string
+        default: "claude-sonnet-4-5-20250929"
+      timeout_minutes:
+        description: "Review job timeout in minutes"
+        required: false
+        type: number
+        default: 20
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN:
+        required: true
+      WORKFLOW_PAT:
+        required: true
+
+jobs:
+  review:
+    name: Claude review
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ inputs.timeout_minutes }}
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout base repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          ref: ${{ inputs.base_ref }}
+          persist-credentials: false
+
+      - name: Claude Code Review
+        uses: anthropics/claude-code-action@0630ef383a451c46ccac86eb86ee7641e99c4c9a # v1.0.0
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ secrets.WORKFLOW_PAT }}
+          prompt: |
+            You are performing a focused code review of pull request #${{ inputs.pr_number }}
+            in ${{ github.repository }} (base ref: ${{ inputs.base_ref }}).
+            1. Fetch the diff with: gh pr diff ${{ inputs.pr_number }} --repo ${{ github.repository }}
+            2. If the diff is larger than ${{ inputs.max_diff_lines }} lines, review only the first ${{ inputs.max_diff_lines }} lines.
+            3. Look for correctness bugs, security issues and regressions. Be concise and specific.
+            4. Write your findings to review.md and post them with:
+               gh pr comment ${{ inputs.pr_number }} --repo ${{ github.repository }} --body-file review.md
+            This is a read-only review: do not modify any code.
+          claude_args: --model ${{ inputs.model }} --max-turns 15

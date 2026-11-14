@@ -1,0 +1,31 @@
+name: Sync Dependencies
+
+# Keeps downstream repos in sync with the latest SDK changes.
+# Runs after successful package publication to ensure consistency.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/**'
+
+jobs:
+  sync-sdks:
+    runs-on: ubuntu-latest
+    if: github.repository == 'RingProtocol/ring-ai'
+    steps:
+      - name: Sync sdks repo
+        uses: actions/checkout@v4
+        with:
+          repository: RingProtocol/sdks
+          token: ${{ secrets.WORKFLOW_PAT }}
+          ref: main
+      - name: Trigger semantic-release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          echo "sync $(date -u +%Y-%m-%dT%H:%M:%SZ)" > SYNC_TRIGGER
+          git add SYNC_TRIGGER
+          git commit -m "chore: sync deps from ring-ai" --allow-empty
+          git push origin main
