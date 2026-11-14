@@ -170,3 +170,7 @@ Several workflows use external reusable workflows:
 - `_claude-docs-check.yml` - Documentation validation
 - `_generate-pr-metadata.yml` - PR title/description generation
 - `_claude-code-review.yml` - Code review logic
+
+## Security boundary
+
+Claude Code Review authorizes both the original actor and rerun actor through the repository permissions API before any privileged job. The source comment/review author must also have write access. Closed and fork PRs are rejected, including manual and comment requests. Keep the workflow disabled until the external reusable workflow has been independently reviewed; an unavailable reusable workflow is not a substitute for an authorization boundary.

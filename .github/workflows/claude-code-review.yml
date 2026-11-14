@@ -63,10 +63,51 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      allowed: ${{ steps.permission.outputs.allowed }}
+    steps:
+      - uses: bullfrogsec/bullfrog@1831f79cce8ad602eef14d2163873f27081ebfb3 # v0.8.4
+      - name: Authorize actor and source before granting credentials
+        id: permission
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b # v7
+        with:
+          script: |
+            core.setOutput('allowed', 'false');
+            const p = context.payload;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const users = new Set([context.actor, process.env.GITHUB_TRIGGERING_ACTOR]);
+            const source = p.comment?.user || p.review?.user || p.issue?.user || p.pull_request?.user;
+            if (source?.login) users.add(source.login);
+            if (!context.actor || !process.env.GITHUB_TRIGGERING_ACTOR) return;
+            for (const username of users) {
+              const { data } = await github.rest.repos.getCollaboratorPermissionLevel({owner, repo, username});
+              if (!['admin', 'maintain', 'write'].includes(data.permission)) {
+                core.notice('Rejected an actor without repository write permission');
+                return;
+              }
+            }
+            const number = p.pull_request?.number || (p.issue?.pull_request ? p.issue.number : null) || p.inputs?.pr_number;
+            if (number) {
+              if (!/^[1-9][0-9]*$/.test(String(number))) throw new Error('Invalid PR number');
+              const { data: pr } = await github.rest.pulls.get({owner, repo, pull_number: Number(number)});
+              if (pr.state !== 'open' || pr.base.repo.full_name !== `${owner}/${repo}` || pr.head.repo?.full_name !== `${owner}/${repo}`) {
+                core.notice('Privileged AI jobs do not process closed or fork PRs');
+                return;
+              }
+            }
+            core.setOutput('allowed', 'true');
+
   # Pre-check job for automatic reviews to detect automated PRs
   # Only runs for pull_request events (not manual/comment triggers)
   check-automated:
-    if: github.event_name == 'pull_request'
+    needs: authorize
+    if: needs.authorize.outputs.allowed == 'true' && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -94,7 +135,8 @@ jobs:
   # Fetch PR details for manual triggers (workflow_dispatch) and comment triggers
   # This job retrieves base_ref which isn't available in these event contexts
   get-pr-info:
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment'
+    needs: authorize
+    if: needs.authorize.outputs.allowed == 'true' && (github.event_name == 'workflow_dispatch' || github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment')
     runs-on: ubuntu-latest
     permissions:
       contents: read
